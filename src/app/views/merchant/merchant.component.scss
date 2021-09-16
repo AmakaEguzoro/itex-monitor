@@ -1,0 +1,197 @@
+.header {
+  height: 40px;
+  width: 240px;
+  text-align: center;
+  color: #fff;
+  font-family: poppins;
+  padding-top: 7px;
+  background: #5dcc96 0% 0% no-repeat padding-box;
+  border-radius: 0px 70px 70px 0px;
+  opacity: 1;
+}
+.container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.row {
+  justify-content: space-evenly;
+}
+.merchant-id {
+  color: #4b709a;
+  font-family: poppins;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.merchant-name {
+  color: #4b709a;
+  font-family: poppins;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.merchant-email {
+  color: #4b709a;
+  font-family: poppins;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.merchant-number {
+  color: #4b709a;
+  font-family: poppins;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.merchant-description {
+  color: #4b709a;
+  font-family: poppins;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.input-id {
+  width: 204px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.input-name {
+  width: 250px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.email {
+  width: 262px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.phone-number {
+  width: 212px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.description {
+  width: 362px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.form-control {
+  margin-top: 7px;
+}
+.selections {
+  color: #4b709a;
+  font-family: Poppins;
+  font-size: 12px;
+}
+.merchant-type {
+  font-family: Poppins;
+  font-size: 14px;
+  color: #4b709a;
+}
+.address {
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.postal {
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.input-organisation,
+.input-state,
+.input-country {
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #4b709a;
+  opacity: 1;
+}
+.form-check-label {
+  font-family: poppins;
+  font-size: 12px;
+  color: #4b709a;
+}
+.dropdown {
+  font-size: 12px;
+  font-family: Poppins;
+  color: #4b709a;
+}
+.dropdown-option {
+  font-size: 15px;
+  font-family: Poppins;
+  color: #4b709a;
+}
+/* label{
+  font-size:10px;
+  font-family: Poppins;
+  letter-spacing: 0px;
+  color: #BCBCBC;
+  opacity: 1;
+} */
+.dotted {
+  border-top: 1px dashed rgb(211, 208, 208);
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-btn {
+  color: white;
+  font-family: poppins;
+  font-size: 12px;
+  height: 40px;
+  width: 80px;
+  background: #d3d3d3 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #4b709a19;
+  border-radius: 4px;
+  opacity: 1;
+}
+.done-btn {
+  color: white;
+  font-family: poppins;
+  font-size: 12px;
+  height: 40px;
+  width: 80px;
+  background: #4b709a 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #4b709a19;
+  border-radius: 4px;
+  opacity: 1;
+}
+//start
+.icon-container {
+  border: 1px solid black;
+  padding: 5px 0px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-cont {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  align-items: center;
+  margin-bottom: 0;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+  color: #5dcc96;
+}
