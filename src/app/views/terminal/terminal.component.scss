@@ -1,0 +1,236 @@
+.header {
+  height: 40px;
+  width: 240px;
+  text-align: center;
+  color: #fff;
+  font-family: poppins;
+  padding-top: 7px;
+  background: #5dcc96 0% 0% no-repeat padding-box;
+  border-radius: 0px 70px 70px 0px;
+  opacity: 1;
+}
+// .main {
+//   flex: 1 0 auto;
+//   min-height: 100%;
+//   padding: 5rem 1rem 2rem 10rem;
+//   background-color: #ffffff;
+// }
+// .container {
+//   padding-left: 40px;
+//   padding-right: 40px;
+// }
+.row {
+  justify-content: space-evenly;
+}
+.form-control {
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.terminal-id {
+  color: #4b709a;
+  font-size: 12px;
+}
+.input-terminal {
+  width: 180px;
+  height: 40px;
+}
+
+.terminal-model,
+.model-type,
+.terminal-status,
+.model-name {
+  color: #4b709a;
+  font-size: 12px;
+}
+
+.select-model {
+  width: 90px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.input-model {
+  width: 70px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.input-name {
+  width: 90px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.select-status {
+  width: 70px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.input-status {
+  width: 100px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.btn-filter {
+  background-color: #4b709a;
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  opacity: 1;
+  height: 30px;
+  width: 80px;
+  margin-top: 19px;
+}
+
+//start
+.flexicon {
+  margin-left: 89px;
+  height: 40px;
+  width: 90%;
+  border: 2px solid #4b6f99;
+  border-radius: 4px;
+  background-color: #fff;
+  opacity: 1;
+}
+.flexicon ul {
+  list-style-type: none;
+  display: flex;
+  color: #5dcc96;
+  cursor: pointer;
+}
+.flexicon li {
+  margin-right: 10px;
+}
+.flexicon a {
+  float: left;
+  margin: 10px;
+  font-size: 12px;
+}
+.flexicon-image {
+  width: 15px;
+  height: 15px;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  color: #5dcc96;
+}
+.table {
+  width: 105%;
+  border: 2px solid #4b709a;
+  opacity: 1;
+}
+.table th {
+  border: 2px solid #4b709a;
+  font-size: 12px;
+  color: #4b709a;
+}
+.table td {
+  font-size: 12px;
+}
+.modal-body {
+  padding-left: 70px;
+}
+
+.terminal-id,
+.model-name,
+.terminal-caption,
+.terminal-description,
+.start-terminal,
+.terminal-expiration {
+  font-size: 12px;
+  color: #4b709a;
+}
+.input-id-modal {
+  width: 200px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.input-model-modal {
+  width: 200px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.caption {
+  width: 220px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.description {
+  width: 400px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.input-period {
+  width: 200px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.input-expiration {
+  width: 200px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #4b709a;
+  border-radius: 4px;
+  opacity: 1;
+}
+.dotted {
+  border-top: 1px dashed rgb(211, 208, 208);
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-btn {
+  color: white;
+  font-family: poppins;
+  font-size: 12px;
+  background: #d3d3d3 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #4b709a19;
+  border-radius: 4px;
+  opacity: 1;
+}
+.done-btn {
+  color: white;
+  font-family: poppins;
+  font-size: 12px;
+  background: #4b709a 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #4b709a19;
+  border-radius: 4px;
+  opacity: 1;
+}

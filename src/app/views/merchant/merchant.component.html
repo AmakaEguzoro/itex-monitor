@@ -1,16 +1,16 @@
-<div class="">
+<div class="main">
   <!-- main dashboard -->
 
+  <!-- SEARCH -->
   <div class="container">
-    <!-- SEARCH -->
     <div class="row">
       <!-- search by id -->
-      <div class="col-md-3">
+      <div class="col-md-3 merchant-id">
         <p>Merchant ID</p>
         <select
           ngDefaultControl
           [ngModelOptions]="{ standalone: true }"
-          class="browser-default custom-select d-block"
+          class="browser-default custom-select d-block input-id"
           mdbTooltip="How many times in a 24hr period"
           placement="top"
         >
@@ -21,91 +21,95 @@
         </select>
       </div>
 
+      <div class="col-md-3"></div>
+
       <!-- filter -->
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <div class="row">
-          <div class="">
+          <div class="merchant-number">
             <p>Contact</p>
             <input
-              class="form-control my-0 py-0"
+              class="form-control my-0 py-0 phone-number"
               [ngModelOptions]="{ standalone: true }"
               ngDefaultControl
               type="text"
               placeholder=""
             />
           </div>
-          <div class="">
+          <div class="merchant-name">
             <p>Merchant Name</p>
             <input
-              class="form-control my-0 py-0"
+              class="form-control my-0 py-0 input-name"
               [ngModelOptions]="{ standalone: true }"
               ngDefaultControl
               type="text"
               placeholder=""
             />
           </div>
-          <div class="">
+          <div class="merchant-status">
             <p>Status</p>
             <input
-              class="form-control my-0 py-0"
+              class="form-control my-0 py-0 input-status"
               [ngModelOptions]="{ standalone: true }"
               ngDefaultControl
               type="text"
               placeholder=""
             />
           </div>
-          <button class="btn btn-sm">Filter</button>
+          <button class="btn btn-sm btn-filter">Filter</button>
         </div>
       </div>
     </div>
   </div>
   <br />
 
-  <!-- modals  -->
-  <div class="container icon-container">
+  <!-- flexicon  -->
+  <div class="flexicon">
     <ul class="flex-cont">
       <li class="icons">
         <img
           class="flexicon-image img-responsive"
-          src="../../../assets/img/ic_home.svg"
+          src="../../../assets/img/web.svg"
+          (click)="viewModal.show()"
         /><a>View</a>
       </li>
       <li class="icons">
         <img
           class="flexicon-image img-responsive"
-          src="../../../assets/img/ic_home.svg"
+          src="../../../assets/img/ui.svg"
           (click)="addModal.show()"
         /><a>Add</a>
       </li>
       <li class="icons">
         <img
           class="flexicon-image img-responsive"
-          src="../../../assets/img/ic_home.svg"
+          src="../../../assets/img/archive.svg"
           (click)="editModal.show()"
         /><a>Edit</a>
       </li>
       <li class="icons">
         <img
           class="flexicon-image img-responsive"
-          src="../../../assets/img/ic_home.svg"
+          src="../../../assets/img/rubbish-can.svg"
         /><a>Delete</a>
       </li>
       <li class="icons">
-        <img class="flexicon-image" src="../../../assets/img/ic_home.svg" /><a
+        <img class="flexicon-image" src="../../../assets/img/arrows.svg" /><a
           >Import</a
         >
       </li>
       <li class="icons">
-        <img class="flexicon-image" src="../../../assets/img/ic_home.svg" /><a
-          >Export</a
-        >
+        <img
+          class="flexicon-image"
+          src="../../../assets/img/arrows (1).svg"
+        /><a>Export</a>
       </li>
     </ul>
   </div>
-
+  <br />
   <!-- table -->
   <div class="container">
-    <table class="table table-striped table-hover mb-0 border-space">
+    <table class="table table-striped table-hover mb-0">
       <!--Table head-->
       <thead>
         <tr style="text-align: center">
@@ -148,7 +152,6 @@
           </th>
         </tr>
       </thead>
-      <!--Table head-->
 
       <!--Table body-->
       <tbody>
@@ -168,7 +171,6 @@
           <td>{{ row.merchantID }}</td>
           <td>{{ row.merchantName }}</td>
           <td>{{ row.contacts[0].phone }}</td>
-
           <td>{{ row.status }}</td>
         </tr>
       </tbody>
@@ -194,6 +196,7 @@
   </div>
 </div>
 
+<!-- Add merchant modal -->
 <div
   mdbModal
   #addModal="mdbModal"
@@ -207,8 +210,8 @@
 >
   <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <!-- <h4 class="modal-title" id="myModalLabel">{{ title }} Rows</h4> -->
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
         <div>
           <button
             type="button"
@@ -221,206 +224,206 @@
             x
           </button>
         </div>
-      </div>
-      <div class="modal-body">
-        <div>
-          <!-- modal head -->
-          <div class="header">
-            <p>Add Merchant</p>
-          </div>
+      </div> -->
 
-          <br />
-          <!-- modal body -->
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4 merchant-id">
-                Merchant ID
-                <input type="text" class="form-control input-id" />
-              </div>
-              <div class="col-md-4 merchant-name">
-                Merchant Name
-                <input type="text" class="form-control input-name" />
-              </div>
-              <div class="col-md-4 merchant-email">
-                Email
-                <input type="text" class="form-control email" />
-              </div>
+      <div>
+        <!-- modal head -->
+        <div class="header">
+          <p>Add Merchant</p>
+        </div>
+
+        <br />
+        <!-- modal body -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 merchant-id">
+              Merchant ID
+              <input type="text" class="form-control input-id" />
             </div>
+            <div class="col-md-4 merchant-name">
+              Merchant Name
+              <input type="text" class="form-control input-name" />
+            </div>
+            <div class="col-md-4 merchant-email">
+              Email
+              <input type="text" class="form-control email" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 merchant-number">
+              Phone Number
+              <input type="text" class="form-control phone-number" />
+            </div>
+            <div class="col-sm-8 merchant-description">
+              Description
+              <input type="text" class="form-control description" />
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div>
+            <p class="merchant-type">Merchant Type</p>
+            <br />
+
             <div class="row">
-              <div class="col-md-6 merchant-number">
-                Phone Number
-                <input type="text" class="form-control phone-number" />
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Business To Business
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Convinence
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Public Sector
+                </div>
               </div>
-              <div class="col-md-6 merchant-description">
-                Description
-                <input type="text" class="form-control description" />
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Internet
+                </div>
+                <br />
+
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Petroleum
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Retail W/tip
+                </div>
+              </div>
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Restaurant
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Fast Food
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Mail/Phone
+                </div>
+              </div>
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  lodging
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Shopping Mall
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Hotel
+                </div>
+              </div>
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Retail
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Utility
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Others
+                </div>
               </div>
             </div>
             <hr class="dotted" />
-            <div>
-              <p class="merchant-type">Merchant Type</p>
-
-              <div class="row">
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Business To Business
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Convinence
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Public Sector
-                  </div>
-                </div>
-
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Internet
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Petroleum
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Retail W/tip
-                  </div>
-                </div>
-
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Restaurant
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Fast Food
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Mail/Phone
-                  </div>
-                </div>
-
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    lodging
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Shopping Mall
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Hotel
-                  </div>
-                </div>
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Retail
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Utility
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Others
-                  </div>
-                </div>
-              </div>
-              <hr class="dotted" />
-              <div class="row">
-                <div class="form-check form-check-inline col">
-                  <label class="form-check-label col-md-4" for="inlineCheckbox1"
-                    >Country</label
-                  >
-                  <select
-                    name="country"
-                    id="country"
-                    class="form-control input-country"
-                  >
-                    <option value="select Country" class="dropdown">
-                      -Select Country-
-                    </option>
-                    <option value="Nigeria" class="dropdown-option">
-                      Nigeria
-                    </option>
-                    <option value="Ghana" class="dropdown-option">Ghana</option>
-                    <option value="Togo" class="dropdown-option">Togo</option>
-                  </select>
-                </div>
-                <div class="form-check form-check-inline col">
-                  <label class="form-check-label col-md-6" for="inlineCheckbox1"
-                    >State/Province</label
-                  >
-                  <select
-                    name="country"
-                    id="country"
-                    class="form-control input-state"
-                  >
-                    <option value="select Country" class="dropdown">
-                      -Select State-
-                    </option>
-                    <option value="Nigeria" class="dropdown-option">
-                      Lagos
-                    </option>
-                    <option value="Ghana" class="dropdown-option">Abuja</option>
-                    <option value="Togo" class="dropdown-option">
-                      Port Harcourt
-                    </option>
-                  </select>
-                </div>
-                <div class="form-check form-check-inline col">
-                  <label class="form-check-label col-md-4" for="inlineCheckbox1"
-                    >Postal Code</label
-                  >
-                  <input type="text" class="form-control postal" />
-                </div>
-              </div>
-              <div class="form-check form-check-inline">
-                <label class="form-check-label col-md-4">Address</label>
-                <input type="text" class="form-control address" />
-              </div>
-              <hr class="dotted" />
-              <div class="form-check form-check-inline">
-                <label class="form-check-label col-md-4" for="inlineCheckbox1"
-                  >Organisation</label
-                >
+            <div class="row">
+              <div class="forn-check form-check-inline col">
+                <label class="form-check-label col-md-4">Country</label>
                 <select
-                  name="organisation"
-                  id="organisation"
-                  class="form-control input-organisation"
+                  ngDefaultControl
+                  [ngModelOptions]="{ standalone: true }"
+                  class="browser-default custom-select d-block input-id"
+                  mdbTooltip="What country?"
+                  placement="top"
                 >
-                  <option value="select Country" class="dropdown">
-                    -Select Organisation-
-                  </option>
-                  <option value="Nigeria" class="dropdown-option">ITEX</option>
-                  <option value="Ghana" class="dropdown-option">Ghana</option>
-                  <option value="Togo" class="dropdown-option">Togo</option>
+                  <option value="select-country">-select Country-</option>
+                  <option value="3">Nigeria</option>
+                  <option value="4">Togo</option>
+                  <option value="6">Ghana</option>
                 </select>
               </div>
+              <div class="form-check-inline col">
+                <label class="form-check-label col-md-4">Province/State</label>
+                <select
+                  ngDefaultControl
+                  [ngModelOptions]="{ standalone: true }"
+                  class="browser-default custom-select d-block input-id"
+                  mdbTooltip="How many times in a 24hr period"
+                  placement="top"
+                >
+                  <option value="select-state">-select State-</option>
+                  <option value="3">Lagos</option>
+                  <option value="4">Ogun</option>
+                  <option value="6">Ondo</option>
+                </select>
+              </div>
+              <div class="form-check form-check-inline col">
+                <label class="form-check-label col-md-4" for="inlineCheckbox1"
+                  >Postal Code</label
+                >
+                <input type="text" class="form-control postal" />
+              </div>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label col-md-4">Address</label>
+              <input type="text" class="form-control address" />
+            </div>
+            <hr class="dotted" />
+            <div class="form-check-inline col">
+              <label class="form-check-label col-md-2">Organisation</label>
+              <select
+                ngDefaultControl
+                [ngModelOptions]="{ standalone: true }"
+                class="browser-default custom-select d-block input-id"
+                mdbTooltip="How many times in a 24hr period"
+                placement="top"
+              >
+                <option value="select-state">-select Organisation-</option>
+                <option value="3">ITEX</option>
+                <option value="4">Ogun</option>
+                <option value="6">Ondo</option>
+              </select>
             </div>
           </div>
-          <hr />
-          <!-- modal footer -->
-          <div class="buttons">
-            <button onclick="goBack()" type="button" class="btn back-btn">
-              Back
-            </button>
-            <button type="button" class="btn done-btn">Done</button>
-          </div>
+        </div>
+        <hr />
+        <!-- modal footer -->
+        <div class="buttons">
+          <button onclick="goBack()" type="button" class="btn back-btn">
+            Back
+          </button>
+          <button type="button" class="btn done-btn">Done</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-ud btn-md waves-light" (click)="exportExcel(title)"
-          mdbWavesEffect>Export</button> -->
+
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-ud btn-md waves-light" (click)="exportExcel(title)"
+          mdbWavesEffect>Export</button>
         <button
           type="button"
           class="btn btn-uc btn-md waves-light"
@@ -431,10 +434,255 @@
         >
           Close
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
+
+<!-- View merchant modal -->
+<div
+  mdbModal
+  #viewModal="mdbModal"
+  class="modal fade"
+  style="overflow: auto"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myBasicModalLabel"
+  aria-hidden="true"
+  [config]="{ backdrop: true, ignoreBackdropClick: false }"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">View Modal</h4>
+        <div>
+          <button
+            type="button"
+            class="close mr-1 unset-close"
+            aria-label="Close"
+            data-dismiss="modal"
+            (click)="basicModal.hide()"
+            mdbWavesEffect
+          >
+            x
+          </button>
+        </div>
+      </div> -->
+
+      <div>
+        <!-- modal head -->
+        <div class="header">
+          <p>View Merchant</p>
+        </div>
+
+        <br />
+        <!-- modal body -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 merchant-id">
+              Merchant ID
+              <input type="text" class="form-control input-id" />
+            </div>
+            <div class="col-md-4 merchant-name">
+              Merchant Name
+              <input type="text" class="form-control input-name" />
+            </div>
+            <div class="col-md-4 merchant-email">
+              Email
+              <input type="text" class="form-control email" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 merchant-number">
+              Phone Number
+              <input type="text" class="form-control phone-number" />
+            </div>
+            <div class="col-sm-8 merchant-description">
+              Description
+              <input type="text" class="form-control description" />
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div>
+            <p class="merchant-type">Merchant Type</p>
+            <br />
+
+            <div class="row">
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Business To Business
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Convinence
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Public Sector
+                </div>
+              </div>
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Internet
+                </div>
+                <br />
+
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Petroleum
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Retail W/tip
+                </div>
+              </div>
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Restaurant
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Fast Food
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Mail/Phone
+                </div>
+              </div>
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  lodging
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Shopping Mall
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Hotel
+                </div>
+              </div>
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Retail
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Utility
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Others
+                </div>
+              </div>
+            </div>
+            <hr class="dotted" />
+            <div class="row">
+              <div class="forn-check form-check-inline col">
+                <label class="form-check-label col-md-4">Country</label>
+                <select
+                  ngDefaultControl
+                  [ngModelOptions]="{ standalone: true }"
+                  class="browser-default custom-select d-block input-id"
+                  mdbTooltip="How many times in a 24hr period"
+                  placement="top"
+                >
+                  <option value="select-country">-select Country-</option>
+                  <option value="3">Nigeria</option>
+                  <option value="4">Togo</option>
+                  <option value="6">Ghana</option>
+                </select>
+              </div>
+              <div class="form-check-inline col">
+                <label class="form-check-label col-md-4">Province/State</label>
+                <select
+                  ngDefaultControl
+                  [ngModelOptions]="{ standalone: true }"
+                  class="browser-default custom-select d-block input-id"
+                  mdbTooltip="How many times in a 24hr period"
+                  placement="top"
+                >
+                  <option value="select-state">-select State-</option>
+                  <option value="3">Lagos</option>
+                  <option value="4">Ogun</option>
+                  <option value="6">Ondo</option>
+                </select>
+              </div>
+              <div class="form-check form-check-inline col">
+                <label class="form-check-label col-md-4" for="inlineCheckbox1"
+                  >Postal Code</label
+                >
+                <input type="text" class="form-control postal" />
+              </div>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label col-md-4">Address</label>
+              <input type="text" class="form-control address" />
+            </div>
+            <hr class="dotted" />
+            <div class="form-check-inline col">
+              <label class="form-check-label col-md-2">Organisation</label>
+              <select
+                ngDefaultControl
+                [ngModelOptions]="{ standalone: true }"
+                class="browser-default custom-select d-block input-id"
+                mdbTooltip="How many times in a 24hr period"
+                placement="top"
+              >
+                <option value="select-state">-select Organisation-</option>
+                <option value="3">ITEX</option>
+                <option value="4">Ogun</option>
+                <option value="6">Ondo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!-- modal footer -->
+        <div class="buttons">
+          <button onclick="goBack()" type="button" class="btn back-btn">
+            Back
+          </button>
+          <button type="button" class="btn done-btn">Done</button>
+        </div>
+      </div>
+
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-ud btn-md waves-light" (click)="exportExcel(title)"
+          mdbWavesEffect>Export</button>
+        <button
+          type="button"
+          class="btn btn-uc btn-md waves-light"
+          aria-label="Close"
+          data-dismiss="modal"
+          (click)="basicModal.hide()"
+          mdbWavesEffect
+        >
+          Close
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- Edit merchant modal -->
 <div
   mdbModal
   #editModal="mdbModal"
@@ -448,7 +696,7 @@
 >
   <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <!-- <div class="modal-header">
         <h4 class="modal-title" id="myModalLabel">Edit Modal</h4>
         <div>
           <button
@@ -462,206 +710,206 @@
             x
           </button>
         </div>
-      </div>
-      <div class="modal-body">
-        <div>
-          <!-- modal head -->
-          <div class="header">
-            <p>Add Merchant</p>
-          </div>
+      </div> -->
 
-          <br />
-          <!-- modal body -->
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4 merchant-id">
-                Merchant ID
-                <input type="text" class="form-control input-id" />
-              </div>
-              <div class="col-md-4 merchant-name">
-                Merchant Name
-                <input type="text" class="form-control input-name" />
-              </div>
-              <div class="col-md-4 merchant-email">
-                Email
-                <input type="text" class="form-control email" />
-              </div>
+      <div>
+        <!-- modal head -->
+        <div class="header">
+          <p>Edit Merchant</p>
+        </div>
+
+        <br />
+        <!-- modal body -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 merchant-id">
+              Merchant ID
+              <input type="text" class="form-control input-id" />
             </div>
+            <div class="col-md-4 merchant-name">
+              Merchant Name
+              <input type="text" class="form-control input-name" />
+            </div>
+            <div class="col-md-4 merchant-email">
+              Email
+              <input type="text" class="form-control email" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 merchant-number">
+              Phone Number
+              <input type="text" class="form-control phone-number" />
+            </div>
+            <div class="col-sm-8 merchant-description">
+              Description
+              <input type="text" class="form-control description" />
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div>
+            <p class="merchant-type">Merchant Type</p>
+            <br />
+
             <div class="row">
-              <div class="col-md-6 merchant-number">
-                Phone Number
-                <input type="text" class="form-control phone-number" />
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Business To Business
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Convinence
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Public Sector
+                </div>
               </div>
-              <div class="col-md-6 merchant-description">
-                Description
-                <input type="text" class="form-control description" />
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Internet
+                </div>
+                <br />
+
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Petroleum
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Retail W/tip
+                </div>
+              </div>
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Restaurant
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Fast Food
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Mail/Phone
+                </div>
+              </div>
+
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  lodging
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Shopping Mall
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Hotel
+                </div>
+              </div>
+              <div class="col mx-1">
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Retail
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Utility
+                </div>
+                <br />
+                <div class="selections">
+                  <input type="checkbox" id="selectAll" />
+                  Others
+                </div>
               </div>
             </div>
             <hr class="dotted" />
-            <div>
-              <p class="merchant-type">Merchant Type</p>
-
-              <div class="row">
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Business To Business
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Convinence
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Public Sector
-                  </div>
-                </div>
-
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Internet
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Petroleum
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Retail W/tip
-                  </div>
-                </div>
-
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Restaurant
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Fast Food
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Mail/Phone
-                  </div>
-                </div>
-
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    lodging
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Shopping Mall
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Hotel
-                  </div>
-                </div>
-                <div class="col mx-1">
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Retail
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Utility
-                  </div>
-                  <div class="selections">
-                    <input type="checkbox" id="selectAll" />
-                    Others
-                  </div>
-                </div>
-              </div>
-              <hr class="dotted" />
-              <div class="row">
-                <div class="form-check form-check-inline col">
-                  <label class="form-check-label col-md-4" for="inlineCheckbox1"
-                    >Country</label
-                  >
-                  <select
-                    name="country"
-                    id="country"
-                    class="form-control input-country"
-                  >
-                    <option value="select Country" class="dropdown">
-                      -Select Country-
-                    </option>
-                    <option value="Nigeria" class="dropdown-option">
-                      Nigeria
-                    </option>
-                    <option value="Ghana" class="dropdown-option">Ghana</option>
-                    <option value="Togo" class="dropdown-option">Togo</option>
-                  </select>
-                </div>
-                <div class="form-check form-check-inline col">
-                  <label class="form-check-label col-md-6" for="inlineCheckbox1"
-                    >State/Province</label
-                  >
-                  <select
-                    name="country"
-                    id="country"
-                    class="form-control input-state"
-                  >
-                    <option value="select Country" class="dropdown">
-                      -Select State-
-                    </option>
-                    <option value="Nigeria" class="dropdown-option">
-                      Lagos
-                    </option>
-                    <option value="Ghana" class="dropdown-option">Abuja</option>
-                    <option value="Togo" class="dropdown-option">
-                      Port Harcourt
-                    </option>
-                  </select>
-                </div>
-                <div class="form-check form-check-inline col">
-                  <label class="form-check-label col-md-4" for="inlineCheckbox1"
-                    >Postal Code</label
-                  >
-                  <input type="text" class="form-control postal" />
-                </div>
-              </div>
-              <div class="form-check form-check-inline">
-                <label class="form-check-label col-md-4">Address</label>
-                <input type="text" class="form-control address" />
-              </div>
-              <hr class="dotted" />
-              <div class="form-check form-check-inline">
-                <label class="form-check-label col-md-4" for="inlineCheckbox1"
-                  >Organisation</label
-                >
+            <div class="row">
+              <div class="forn-check form-check-inline col">
+                <label class="form-check-label col-md-4">Country</label>
                 <select
-                  name="organisation"
-                  id="organisation"
-                  class="form-control input-organisation"
+                  ngDefaultControl
+                  [ngModelOptions]="{ standalone: true }"
+                  class="browser-default custom-select d-block input-id"
+                  mdbTooltip="How many times in a 24hr period"
+                  placement="top"
                 >
-                  <option value="select Country" class="dropdown">
-                    -Select Organisation-
-                  </option>
-                  <option value="Nigeria" class="dropdown-option">ITEX</option>
-                  <option value="Ghana" class="dropdown-option">Ghana</option>
-                  <option value="Togo" class="dropdown-option">Togo</option>
+                  <option value="select-country">-select Country-</option>
+                  <option value="3">Nigeria</option>
+                  <option value="4">Togo</option>
+                  <option value="6">Ghana</option>
                 </select>
               </div>
+              <div class="form-check-inline col">
+                <label class="form-check-label col-md-4">Province/State</label>
+                <select
+                  ngDefaultControl
+                  [ngModelOptions]="{ standalone: true }"
+                  class="browser-default custom-select d-block input-id"
+                  mdbTooltip="How many times in a 24hr period"
+                  placement="top"
+                >
+                  <option value="select-state">-select State-</option>
+                  <option value="3">Lagos</option>
+                  <option value="4">Ogun</option>
+                  <option value="6">Ondo</option>
+                </select>
+              </div>
+              <div class="form-check form-check-inline col">
+                <label class="form-check-label col-md-4" for="inlineCheckbox1"
+                  >Postal Code</label
+                >
+                <input type="text" class="form-control postal" />
+              </div>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label col-md-4">Address</label>
+              <input type="text" class="form-control address" />
+            </div>
+            <hr class="dotted" />
+            <div class="form-check-inline col">
+              <label class="form-check-label col-md-2">Organisation</label>
+              <select
+                ngDefaultControl
+                [ngModelOptions]="{ standalone: true }"
+                class="browser-default custom-select d-block input-id"
+                mdbTooltip="How many times in a 24hr period"
+                placement="top"
+              >
+                <option value="select-state">-select Organisation-</option>
+                <option value="3">ITEX</option>
+                <option value="4">Ogun</option>
+                <option value="6">Ondo</option>
+              </select>
             </div>
           </div>
-          <hr />
-          <!-- modal footer -->
-          <div class="buttons">
-            <button onclick="goBack()" type="button" class="btn back-btn">
-              Back
-            </button>
-            <button type="button" class="btn done-btn">Done</button>
-          </div>
+        </div>
+        <hr />
+        <!-- modal footer -->
+        <div class="buttons">
+          <button onclick="goBack()" type="button" class="btn back-btn">
+            Back
+          </button>
+          <button type="button" class="btn done-btn">Done</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-ud btn-md waves-light" (click)="exportExcel(title)"
-          mdbWavesEffect>Export</button> -->
+
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-ud btn-md waves-light" (click)="exportExcel(title)"
+          mdbWavesEffect>Export</button>
         <button
           type="button"
           class="btn btn-uc btn-md waves-light"
@@ -672,28 +920,7 @@
         >
           Close
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
-<!-- 
-          address: "13 ajayi street popola"
-archived: false
-city: "Isolo"
-contacts: [{id: 3, merchantId: 2, contactName: "home", email: "hishome@abcmail.com", fax: 13245674,…},…]
-country: "Nigeria"
-createdAt: "2021-09-14T03:26:51.885Z"
-createdBy: null
-id: 2
-      <!--  [(ngModel)]="row.isSelected"
-                (change)="getUnassigned(row.isSelected, row.serialNumber, i)" 
-                id="tableDefaultCheck2" 
-merchantID: "JY764ER"
-merchantName: "Tommy Second merchant"
-merchantTypes: [2, 6, 3]
-postalCode: 1234
-state: "Lagos"
-status: "active"
-types: [,…]
-updatedAt: "2021-09-14T03:26:51.885Z"
-updatedBy: null -->

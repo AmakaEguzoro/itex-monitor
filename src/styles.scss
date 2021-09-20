@@ -13,8 +13,8 @@ $base-color11: #116fff;
 $base-color12: #69a8ff;
 
 @font-face {
-  font-family: "Futura";
-  src: url("/assets/fonts/FutuBk.tff") format("ttf");
+  font-family: "Poppins";
+  src: url("https://fonts.googleapis.com/css?family=Poppins:400,700,900");
 }
 body {
   background-color: #fcf9ff;
@@ -189,10 +189,10 @@ p:not(.no-change) {
   background-color: #fff !important;
 }
 
-.btn {
-  border-radius: 5px !important;
-  margin-left: 0 !important;
-}
+// .btn {
+//   border-radius: 5px !important;
+//   margin-left: 0 !important;
+// }
 
 .need-header {
   background: $base-color2;
@@ -245,7 +245,7 @@ body {
 }
 .white-skin .side-nav .collapsible li :hover {
   background-color: rgba(101, 0, 224, 0.05);
-  color: rgba(101, 0, 224, 1);
+  color: #4b709a;
 }
 .white-skin .side-nav .collapsible li a img {
   width: 10%;
@@ -253,8 +253,8 @@ body {
 
 .active-link a {
   background-color: rgba(101, 0, 224, 0.05) !important;
-  color: rgba(101, 0, 224, 1) !important;
-  border-left: 5px solid #5322db;
+  color: #5dcc96 !important;
+  border-left: 3px solid #5dcc96;
   transform: translate(20px);
   // background-color: #fff;
   // border-radius: 0px 4px 4px 0px;

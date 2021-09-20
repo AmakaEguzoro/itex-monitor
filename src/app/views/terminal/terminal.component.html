@@ -1,3 +1,661 @@
-<p>
-  terminal works!
-</p>
+<
+<div class="">
+  <!-- main dashboard -->
+
+  <!-- SEARCH -->
+  <div class="row">
+    <!-- search by id -->
+    <div class="col-md-4">
+      <div class="row">
+        <div class="terminal-id">
+          <p>Terminal ID</p>
+          <input
+            class="form-control my-0 py-0 input-terminal"
+            [ngModelOptions]="{ standalone: true }"
+            ngDefaultControl
+            type="text"
+            placeholder=""
+          />
+        </div>
+        <div class="terminal-model">
+          <p>Model</p>
+          <select
+            ngDefaultControl
+            [ngModelOptions]="{ standalone: true }"
+            class="browser-default custom-select d-block select-model"
+            mdbTooltip="How many times in a 24hr period"
+            placement="top"
+          >
+            <option value="2">All model</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4"></div>
+
+    <!-- filter -->
+    <div class="col-lg-4">
+      <div class="row">
+        <div class="col model-type">
+          <p>Model</p>
+          <input
+            class="form-control my-0 py-0 input-model"
+            [ngModelOptions]="{ standalone: true }"
+            ngDefaultControl
+            type="text"
+            placeholder=""
+          />
+        </div>
+        <div class="model-name col">
+          <p>Model Name</p>
+          <input
+            class="form-control my-0 py-0 input-name"
+            [ngModelOptions]="{ standalone: true }"
+            ngDefaultControl
+            type="text"
+            placeholder=""
+          />
+        </div>
+        <div class="terminal-status col">
+          <p>Status</p>
+          <select
+            ngDefaultControl
+            [ngModelOptions]="{ standalone: true }"
+            class="browser-default custom-select d-block select-status"
+            mdbTooltip="How many times in a 24hr period"
+            placement="top"
+          >
+            <option value="2">All</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+        <button class="btn btn-sm btn-filter col">Filter</button>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <!-- flexicons  -->
+  <div class="flexicon">
+    <ul class="flex-cont">
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/web.svg"
+          (click)="viewModal.show()"
+        /><a>View</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/ui.svg"
+          (click)="addModal.show()"
+        /><a>Add</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/archive.svg"
+          (click)="editModal.show()"
+        /><a>Edit</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/rubbish-can.svg"
+        /><a>Delete</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/open.svg"
+        /><a>Enable</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/closed.svg"
+        /><a>Disable</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/archive (1).svg"
+        /><a>Copy</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/files.svg"
+        /><a>Batch Deploy</a>
+      </li>
+      <li class="icons">
+        <img class="flexicon-image" src="../../../assets/img/arrows.svg" /><a
+          >Import</a
+        >
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image"
+          src="../../../assets/img/arrows (1).svg"
+        /><a>Export</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/interface (1).svg"
+        /><a>Schedule</a>
+      </li>
+      <li class="icons">
+        <img
+          class="flexicon-image img-responsive"
+          src="../../../assets/img/computer.svg"
+        /><a>Restore</a>
+      </li>
+    </ul>
+  </div>
+  <br />
+
+  <!-- table -->
+  <div class="container">
+    <table class="table table-striped table-hover mb-0">
+      <!--Table head-->
+      <thead>
+        <tr style="text-align: center">
+          <th>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="checkbox-style"
+                id="tableDefaultCheck2"
+              />
+            </div>
+          </th>
+          <th class="th-md">S/N</th>
+
+          <th class="th-md">
+            <a (click)="sortBy('terminal_id')"
+              >Terminal ID
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+
+          <th class="th-md">
+            <a (click)="sortBy('merchant_id')"
+              >Model
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >Status
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >Download SN
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >Last Download Time
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')">
+              Download Status
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >Update Time
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+        </tr>
+      </thead>
+      <!--Table head-->
+
+      <!--Table body-->
+      <tbody>
+        <tr
+          *ngFor="let row of merchants; let i = index"
+          style="text-align: center"
+        >
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="checkbox-style" />
+              <!-- <label class="custom-control-label" for="tableDefaultCheck2">Check 2</label> -->
+            </div>
+            <!-- <input type="checkbox" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected, row.serialNumber)">  -->
+          </td>
+
+          <td>{{ serial + i }}</td>
+          <td>{{ row.terminalID }}</td>
+          <td>{{ row.modelId }}</td>
+          <td>{{ row.status }}</td>
+          <td>{{ row.firmwareId }}</td>
+          <td>{{ row.limitDownloadTime }}</td>
+          <td>{{ row.isDeleteAllApplications }}</td>
+          <td>{{ row.updatedAt }}</td>
+        </tr>
+      </tbody>
+      <!-- {
+            "id": 9,
+            "applicationId": 2,
+            "terminalID": "4t6673456",
+            "modelId": 3,
+            "firmwareId": 1,
+            "caption": "another one",
+            "description": "well lets see again",
+            "limitDownloadTime": 0,
+            "limitDownloadInterval": 0,
+            "notDownloadEDCParameters": false,
+            "notDownloadENVParameters": false,
+            "removable": true,
+            "archived": false,
+            "startDate": "2020-05-10T19:08:17.124Z",
+            "status": "active",
+            "expirationDate": "2020-05-20T19:08:17.125Z",
+            "isDeleteAllApplications": false,
+            "createdAt": "2020-05-10T19:08:17.211Z",
+            "updatedAt": "2020-05-12T13:45:23.201Z",
+            "application": {
+                "id": 2,
+                "name": "the app 1.0.1",
+                "modelId": 2,
+                "createdAt": "2020-05-10T09:11:25.166Z",
+                "updatedAt": "2020-05-10T09:11:25.166Z"
+            },
+            "firmware": {
+                "id": 1,
+                "name": "firmware 1.0.2",
+                "modelId": 2,
+                "createdAt": "2020-05-10T10:20:19.418Z",
+                "updatedAt": "2020-05-10T10:20:19.418Z"
+            }
+        },
+        {
+            "id": 2,
+            "applicationId": 1,
+            "terminalID": "yyu6737845",
+            "modelId": 2,
+            "firmwareId": 2,
+            "caption": "Getting updated",
+            "description": "Just some more text",
+            "limitDownloadTime": 0,
+            "limitDownloadInterval": 0,
+            "notDownloadEDCParameters": false,
+            "notDownloadENVParameters": false,
+            "removable": false,
+            "archived": false,
+            "startDate": "2020-05-13T13:42:28.545Z",
+            "status": "active",
+            "expirationDate": "2020-05-22T13:42:28.545Z",
+            "isDeleteAllApplications": false,
+            "createdAt": "2020-05-10T14:43:26.971Z",
+            "updatedAt": "2020-05-12T13:43:08.667Z",
+            "application": {
+                "id": 1,
+                "name": "TMS app 1.0.1",
+                "modelId": 2,
+                "createdAt": "2020-05-10T09:11:02.482Z",
+                "updatedAt": "2020-05-10T09:11:02.482Z"
+            },
+            "firmware": {
+                "id": 2,
+                "name": "firmware 1.0.4",
+                "modelId": 2,
+                "createdAt": "2020-05-10T10:20:34.042Z",
+                "updatedAt": "2020-05-10T10:20:34.042Z" -->
+
+      <!--Table body-->
+      <tbody *ngIf="isData == false; else gettingData">
+        <tr>
+          <td colspan="15" style="text-align: center; padding: 5% 20%">
+            <strong>No Data Available</strong>
+          </td>
+        </tr>
+      </tbody>
+      <ng-template #gettingData>
+        <tbody *ngIf="isData == undefined">
+          <tr>
+            <td colspan="15" style="text-align: center; padding: 5% 20%">
+              <mdb-spinner spinnerColor="blue"></mdb-spinner>
+            </td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </table>
+  </div>
+</div>
+
+<!-- view terminal model -->
+<div
+  mdbModal
+  #viewModal="mdbModal"
+  class="modal fade"
+  style="overflow: auto"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myBasicModalLabel"
+  aria-hidden="true"
+  [config]="{ backdrop: true, ignoreBackdropClick: false }"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">View Modal</h4>
+        <div>
+          <button
+            type="button"
+            class="close mr-1 unset-close"
+            aria-label="Close"
+            data-dismiss="modal"
+            (click)="basicModal.hide()"
+            mdbWavesEffect
+          >
+            x
+          </button>
+        </div>
+      </div> -->
+
+      <div>
+        <!-- modal head -->
+        <div class="header">
+          <p>View Terminal</p>
+        </div>
+
+        <br />
+        <!-- modal body -->
+        <div class="container modal-body">
+          <div class="row">
+            <div class="col-md-6 terminal-id">
+              Terminal ID
+              <input type="text" class="form-control input-id-modal" />
+            </div>
+            <div class="col-md-6 model-name">
+              Model
+              <input type="text" class="form-control input-model-modal" />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-4 terminal-caption">
+              Caption
+              <input type="text" class="form-control caption" />
+            </div>
+            <div class="col-md-8 terminal-description">
+              Description
+              <input type="text" class="form-control description" />
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div class="row">
+            <div class="col-md-6 selections">
+              <input type="checkbox" id="selectAll" />
+              Limit download time
+              <br />
+              No download ENV parameter
+              <p>Yes</p>
+            </div>
+
+            <div class="col-md-6 selections">
+              <input type="checkbox" id="selectAll" />
+              Limit download interval
+              <br />
+              No download ENV parameter
+              <p>No</p>
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div class="row">
+            <div class="col-md-6 start-terminal">
+              Start date/time
+              <input type="text" class="form-control input-period" />
+            </div>
+            <div class="col-md-6 terminal-expiration">
+              Expiration date/time
+              <input type="text" class="form-control input-expiration" />
+            </div>
+          </div>
+          <br />
+          <div class="selections">
+            <input type="checkbox" id="selectAll" class="delete-application" />
+            Delete Application
+          </div>
+        </div>
+        <hr />
+        <!-- modal footer -->
+        <div class="buttons">
+          <button type="button" class="btn back-btn">Back</button>
+          <button type="button" class="btn done-btn">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add terminal modal -->
+<div
+  mdbModal
+  #addModal="mdbModal"
+  class="modal fade"
+  style="overflow: auto"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myBasicModalLabel"
+  aria-hidden="true"
+  [config]="{ backdrop: true, ignoreBackdropClick: false }"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">View Modal</h4>
+        <div>
+          <button
+            type="button"
+            class="close mr-1 unset-close"
+            aria-label="Close"
+            data-dismiss="modal"
+            (click)="basicModal.hide()"
+            mdbWavesEffect
+          >
+            x
+          </button>
+        </div>
+      </div> -->
+
+      <div>
+        <!-- modal head -->
+        <div class="header">
+          <p>Add Terminal</p>
+        </div>
+
+        <br />
+        <!-- modal body -->
+        <div class="container modal-body">
+          <div class="row">
+            <div class="col-md-6 terminal-id">
+              Terminal ID
+              <input type="text" class="form-control input-id-modal" />
+            </div>
+            <div class="col-md-6 model-name">
+              Model
+              <input type="text" class="form-control input-model-modal" />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-4 terminal-caption">
+              Caption
+              <input type="text" class="form-control caption" />
+            </div>
+            <div class="col-md-8 terminal-description">
+              Description
+              <input type="text" class="form-control description" />
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div class="row">
+            <div class="col-md-6 selections">
+              <input type="checkbox" id="selectAll" />
+              Limit download time
+              <br />
+              No download ENV parameter
+              <p>Yes</p>
+            </div>
+
+            <div class="col-md-6 selections">
+              <input type="checkbox" id="selectAll" />
+              Limit download interval
+              <br />
+              No download ENV parameter
+              <p>No</p>
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div class="row">
+            <div class="col-md-6 start-terminal">
+              Start date/time
+              <input type="text" class="form-control input-period" />
+            </div>
+            <div class="col-md-6 terminal-expiration">
+              Expiration date/time
+              <input type="text" class="form-control input-expiration" />
+            </div>
+          </div>
+          <br />
+          <div class="selections">
+            <input type="checkbox" id="selectAll" class="delete-application" />
+            Delete Application
+          </div>
+        </div>
+        <hr />
+        <!-- modal footer -->
+        <div class="buttons">
+          <button type="button" class="btn back-btn">Back</button>
+          <button type="button" class="btn done-btn">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- edit terminal modal -->
+<div
+  mdbModal
+  #editModal="mdbModal"
+  class="modal fade"
+  style="overflow: auto"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myBasicModalLabel"
+  aria-hidden="true"
+  [config]="{ backdrop: true, ignoreBackdropClick: false }"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">View Modal</h4>
+        <div>
+          <button
+            type="button"
+            class="close mr-1 unset-close"
+            aria-label="Close"
+            data-dismiss="modal"
+            (click)="basicModal.hide()"
+            mdbWavesEffect
+          >
+            x
+          </button>
+        </div>
+      </div> -->
+
+      <div>
+        <!-- modal head -->
+        <div class="header">
+          <p>Edit Terminal</p>
+        </div>
+
+        <br />
+        <!-- modal body -->
+        <div class="container modal-body">
+          <div class="row">
+            <div class="col-md-6 terminal-id">
+              Terminal ID
+              <input type="text" class="form-control input-id-modal" />
+            </div>
+            <div class="col-md-6 model-name">
+              Model
+              <input type="text" class="form-control input-model-modal" />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-4 terminal-caption">
+              Caption
+              <input type="text" class="form-control caption" />
+            </div>
+            <div class="col-md-8 terminal-description">
+              Description
+              <input type="text" class="form-control description" />
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div class="row">
+            <div class="col-md-6 selections">
+              <input type="checkbox" id="selectAll" />
+              Limit download time
+              <br />
+              No download ENV parameter
+              <p>Yes</p>
+            </div>
+
+            <div class="col-md-6 selections">
+              <input type="checkbox" id="selectAll" />
+              Limit download interval
+              <br />
+              No download ENV parameter
+              <p>No</p>
+            </div>
+          </div>
+          <hr class="dotted" />
+          <div class="row">
+            <div class="col-md-6 start-terminal">
+              Start date/time
+              <input type="text" class="form-control input-period" />
+            </div>
+            <div class="col-md-6 terminal-expiration">
+              Expiration date/time
+              <input type="text" class="form-control input-expiration" />
+            </div>
+          </div>
+          <br />
+          <div class="selections">
+            <input type="checkbox" id="selectAll" class="delete-application" />
+            Delete Application
+          </div>
+        </div>
+        <hr />
+        <!-- modal footer -->
+        <div class="buttons">
+          <button type="button" class="btn back-btn">Back</button>
+          <button type="button" class="btn done-btn">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

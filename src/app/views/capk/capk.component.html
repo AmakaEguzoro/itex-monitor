@@ -1,3 +1,125 @@
-<p>
-  capk works!
-</p>
+<div class="main">
+  <!-- main dashboard -->
+
+  <!-- <div class="row display-cards">
+    <div class="card master-card col">
+      <p class="label">Number of terminals supported</p>
+      <p class="amount">100,000,000</p>
+    </div>
+    <div class="card visa col">
+      <p class="label">Number of terminals supported</p>
+      <p class="amount">134,000,000</p>
+    </div>
+    <div class="card verve col">
+      <p class="label">Number of terminals supported</p>
+      <p class="amount">14,000,000</p>
+    </div>
+    <div class="card master-card col">
+      <p class="label">Number of terminals supported</p>
+      <p class="amount">500,000</p>
+    </div>
+  </div> -->
+
+  <!-- cards -->
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">100,000,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">134,000,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">14,000,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">500,000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <div class="row">
+    <div class="col-md-6"></div>
+
+    <div class="col-md-6 filter">
+      <div class="merchant-contact">
+        <input type="text" class="search-contact" placeholder="All Issuer" />
+      </div>
+      <div class="merchant-status">
+        <input
+          type="text"
+          class="search-status"
+          placeholder="Search by Terminal ID"
+        />
+      </div>
+      <button class="btn btn-block">Add Card Scheme</button>
+    </div>
+  </div>
+  <br />
+  <!-- table -->
+  <table class="table table-striped">
+    <!-- table head -->
+    <thead>
+      <tr>
+        <th>
+          <span>
+            <input type="checkbox" id="checkbox1" name="option[]" />
+            <label for="selectAll"></label>
+          </span>
+        </th>
+        <th>S/N</th>
+        <th>TERMINAL ID</th>
+        <th>EXPONENT</th>
+        <th>ISSUER</th>
+        <th>EXPONENT</th>
+        <th>RID LIST</th>
+        <th>KEY LENGTH</th>
+        <th>SHAI</th>
+        <th>KEY TYPE</th>
+        <th>EXPIRES</th>
+      </tr>
+    </thead>
+    <!-- table body -->
+    <tbody>
+      <tr>
+        <td>
+          <span>
+            <input type="checkbox" id="selectAll" />
+            <label for="selectAll"></label>
+          </span>
+        </td>
+        <td>1</td>
+        <td>1223456789</td>
+        <td>SDFGHJKHGFDRTYYYYYYYY</td>
+        <td>Mastercard</td>
+        <td>03</td>
+        <td>A0000004</td>
+        <td>1023</td>
+        <td>GAEURTYUDI...</td>
+        <td>TEST</td>
+        <td>31/02/23</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

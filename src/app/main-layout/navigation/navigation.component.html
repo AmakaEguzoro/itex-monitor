@@ -1,17 +1,18 @@
 <!--Double navigation-->
 <header>
-  <!-- Sidebar navigation -->
+  <!-- Sidebar navigation
   <mdb-sidenav #sidenav class="fixed" [fixed]="true">
     <links class="bottom-fix">
-      <div>
+      <div class="menu-items">
         <div class="logo-style" style="padding: 5px">
           <a href="/" class="m-0 p-0"
             ><img src="../../../assets/img/logo.png" class="img-fluid"
           /></a>
           <p>Terminal Management System</p>
         </div>
-        <ul class="collapsible collapsible-accordion">
+        <ul class="collapsible collapsible-accordion sidebar">
           <li
+            class="side-btn"
             [ngClass]="{
               active: (dashboardLink || {}).isActive
             }"
@@ -23,6 +24,7 @@
             <a> &nbsp; Merchant </a>
           </li>
           <li
+            class="side-btn"
             [ngClass]="{
               active: (dashboardLink2 || {}).isActive
             }"
@@ -35,6 +37,7 @@
           </li>
 
           <li
+            class="side-btn"
             [ngClass]="{
               active: (dashboardLink3 || {}).isActive
             }"
@@ -46,6 +49,7 @@
             <a> &nbsp; Application </a>
           </li>
           <li
+            class="side-btn"
             [ngClass]="{
               active: (dashboardLink3 || {}).isActive
             }"
@@ -57,6 +61,7 @@
             <a> &nbsp; Model </a>
           </li>
           <li
+            class="side-btn"
             [ngClass]="{
               active: (dashboardLink7 || {}).isActive
             }"
@@ -72,29 +77,24 @@
         <div></div>
       </div>
     </links>
-  </mdb-sidenav>
+  </mdb-sidenav> -->
   <!--/. Sidebar navigation -->
 
   <!-- Navbar -->
-  <mdb-navbar SideClass="navbar double-nav fixed-top" [containerInside]="false">
-    <navlinks class="navbar-container navbar-style px-4">
-      <!-- SideNav slide-out button -->
-      <div class="bar-style">
+  <!-- <mdb-navbar SideClass="navbar double-nav fixed-top" [containerInside]="false">
+    <navlinks class="navbar-container navbar-style px-4"> -->
+  <!-- SideNav slide-out button -->
+  <!-- <div class="bar-style">
         <a (click)="sidenav.show()" class="button-collapse">
-          <i class="fa fa-bars"></i>
-          <!-- <div class="logo-style ml-1 mr-5" style="display: inline-block">
+          <i class="fa fa-bars"></i> -->
+  <!-- <div class="logo-style ml-1 mr-5" style="display: inline-block">
          
           </div> -->
-        </a>
-      </div>
-      <!--/. SideNav slide-out button -->
-    </navlinks>
-    <!-- <logo>
-            <div class="breadcrumbs breadcrumb-dn mr-auto">
-                <img src="../../../assets/img/payvue.JPG" height="50" width="50" class="img-fluid flex-center"> --
-                <p><strong>TrackMoney</strong></p>
-            </div>
-        </logo> -->
+  <!-- </a>
+      </div> -->
+  <!--/. SideNav slide-out button -->
+  <!-- </navlinks>
+
     <navlinks class="nav-style">
       <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav">
         <li class="nav-item dropdown btn-group" dropdown>
@@ -104,7 +104,7 @@
             class="nav-link dropdown-toggle waves-light"
             mdbWavesEffect
           >
-            <i class="fa fa-user" style="color: #5322db"></i> &nbsp; role
+            <i class="fa fa-user" style="color: #4b709a"></i> &nbsp; role
           </a>
           <div
             class="dropdown-menu dropdown-primary dropdown-menu-right"
@@ -118,7 +118,98 @@
         </li>
       </ul>
     </navlinks>
-  </mdb-navbar>
+  </mdb-navbar> -->
   <!--/. Navbar -->
+  <!-- navbar -->
+  <!-- Image and text -->
+
+  <navbar class="navbar">
+    <div class="navbar-brand">
+      <img src="../../../assets/img/logo.png" class="img-fluid" />
+      <p>Terminal Management System</p>
+    </div>
+
+    <div class="profile">
+      <img class="profile-image" src="../../../assets/img/user.svg" />
+      <p
+        class="nav-link dropdown-toggle"
+        href="#"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Ademola
+      </p>
+    </div>
+  </navbar>
+  <!-- sidebar -->
+  <links class="sidebar">
+    <div class="menu-items">
+      <ul>
+        <li
+          class="side-btn"
+          [ngClass]="{
+            active: (dashboardLink || {}).isActive
+          }"
+          #dashboardLink="routerLinkActive"
+          routerLink="merchant"
+          routerLinkActive="active-link"
+          (click)="closeNav()"
+        >
+          <a> &nbsp; Merchant </a>
+        </li>
+        <li
+          class="side-btn"
+          [ngClass]="{
+            active: (dashboardLink2 || {}).isActive
+          }"
+          #dashboardLink2="routerLinkActive"
+          routerLink="terminal"
+          routerLinkActive="active-link"
+          (click)="closeNav()"
+        >
+          <a> &nbsp; Terminal </a>
+        </li>
+
+        <li
+          class="side-btn"
+          [ngClass]="{
+            active: (dashboardLink3 || {}).isActive
+          }"
+          #dashboardLink3="routerLinkActive"
+          routerLink="application"
+          routerLinkActive="active-link"
+          (click)="closeNav()"
+        >
+          <a> &nbsp; Application </a>
+        </li>
+        <li
+          class="side-btn"
+          [ngClass]="{
+            active: (dashboardLink4 || {}).isActive
+          }"
+          #dashboardLink4="routerLinkActive"
+          routerLink="model"
+          routerLinkActive="active-link"
+          (click)="closeNav()"
+        >
+          <a> &nbsp; Model </a>
+        </li>
+        <li
+          class="side-btn"
+          [ngClass]="{
+            active: (dashboardLink5 || {}).isActive
+          }"
+          #dashboardLink5="routerLinkActive"
+          routerLink="capk"
+          routerLinkActive="active-link"
+          (click)="closeNav()"
+        >
+          <a> &nbsp; CAPK </a>
+        </li>
+      </ul>
+    </div>
+  </links>
 </header>
 <!--/.Double navigation-->
