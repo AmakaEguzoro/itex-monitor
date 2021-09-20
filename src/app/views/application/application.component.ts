@@ -27,7 +27,7 @@ export class ApplicationComponent implements OnInit {
   start: string;
   end: string;
 
-  merchants: any;
+  applications: any;
 
   constructor(
     private payvueservice: PayVueApiService,
@@ -35,22 +35,22 @@ export class ApplicationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getMerchants();
+    this.getApplications();
   }
 
-  getMerchants() {
+  getApplications() {
     this.isData = undefined;
 
     let page = this.page < 1 ? 1 : this.page;
 
-    const apiURL = `/application/get-applications`;
+    const apiURL = `application/get-applications`;
 
     this.payvueservice
       .apiCall(apiURL)
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-          this.merchants = data.data.rows;
+          this.applications = data.data.rows;
 
           this.isData = true;
           this.isLoading = false;

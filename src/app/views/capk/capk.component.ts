@@ -27,7 +27,7 @@ export class CapkComponent implements OnInit {
   start: string;
   end: string;
 
-  merchants: any;
+  capks: any;
 
   constructor(
     private payvueservice: PayVueApiService,
@@ -35,10 +35,10 @@ export class CapkComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getMerchants();
+    this.getCapks();
   }
 
-  getMerchants() {
+  getCapks() {
     this.isData = undefined;
 
     let page = this.page < 1 ? 1 : this.page;
@@ -50,7 +50,7 @@ export class CapkComponent implements OnInit {
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-          this.merchants = data.data.rows;
+          this.capks = data.data.rows;
 
           this.isData = true;
           this.isLoading = false;
