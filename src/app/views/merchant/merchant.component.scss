@@ -19,9 +19,7 @@
 //   padding-left: 40px;
 //   padding-right: 40px;
 // }
-.row {
-  justify-content: space-evenly;
-}
+
 .merchant-id {
   color: #4b709a;
   float: left;
@@ -53,14 +51,7 @@
   font-size: 12px;
   margin-top: 10px;
 }
-.input-id {
-  width: 205px;
-  height: 40px;
-  box-sizing: border-box;
-  border: 1px solid #4b709a;
-  border-radius: 4px;
-  opacity: 1;
-}
+
 .input-name {
   width: 150px;
   height: 40px;
@@ -92,7 +83,7 @@
   border-radius: 4px;
   opacity: 1;
   height: 30px;
-  width: 80px;
+
   margin-top: 27px;
 }
 .description {
@@ -180,9 +171,6 @@
 }
 //start
 .flexicon {
-  margin-left: 89px;
-  height: 40px;
-  width: 85%;
   border: 2px solid #4b6f99;
   border-radius: 4px;
   background-color: #fff;
@@ -194,14 +182,7 @@
   color: #5dcc96;
   cursor: pointer;
 }
-.flexicon li {
-  margin-right: 20px;
-}
-.flexicon a {
-  float: left;
-  margin: 10px;
-  font-size: 12px;
-}
+
 .flexicon-image {
   width: 15px;
   height: 15px;

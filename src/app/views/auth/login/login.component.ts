@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
   // Signs User into system
   signIn() {
     this.loading = true;
-    console.log(this.amaka);
+   
     const apiURL = `user/login`;
 
     // this.errorHandler();  "uniqueParameter": "username",
@@ -108,6 +108,8 @@ export class LoginComponent implements OnInit {
         password: this.password,
       })
       .then((data) => {
+       
+        console.log("here")
         this.loading = false;
         if (data.status == 200) {
           this.toast.success(data.message || "User Login Successful");

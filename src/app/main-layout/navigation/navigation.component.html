@@ -1,18 +1,24 @@
 <!--Double navigation-->
 <header>
-  <!-- Sidebar navigation
-  <mdb-sidenav #sidenav class="fixed" [fixed]="true">
+
+  <mdb-sidenav #sidenav class="fixed" [fixed]="false">
     <links class="bottom-fix">
-      <div class="menu-items">
-        <div class="logo-style" style="padding: 5px">
-          <a href="/" class="m-0 p-0"
-            ><img src="../../../assets/img/logo.png" class="img-fluid"
-          /></a>
+      <div class="">
+       <div class="logo-style ml-1 mr-5" style="display: inline-block">
+   
+      <a href="/" class="m-0 p-0" style="text-align: center;"
+        ><img src="../../../assets/img/logo.png" class="img-fluid" style="width: 120px;"
+      /></a>
+      <p class="logo-text">Terminal Management System</p>
+  
+          </div> 
+        <!-- <div class="navbar-brand">
+          <img src="../../../assets/img/logo.png" class="img-fluid" />
           <p>Terminal Management System</p>
-        </div>
-        <ul class="collapsible collapsible-accordion sidebar">
+        </div> -->
+        <ul class="collapsible collapsible-accordion">
           <li
-            class="side-btn"
+           
             [ngClass]="{
               active: (dashboardLink || {}).isActive
             }"
@@ -21,7 +27,7 @@
             routerLinkActive="active-link"
             (click)="closeNav()"
           >
-            <a> &nbsp; Merchant </a>
+            <a class="li-class"> &nbsp; Merchant </a>
           </li>
           <li
             class="side-btn"
@@ -33,7 +39,7 @@
             routerLinkActive="active-link"
             (click)="closeNav()"
           >
-            <a> &nbsp; Terminal </a>
+            <a class="li-class"> &nbsp; Terminal </a>
           </li>
 
           <li
@@ -46,7 +52,7 @@
             routerLinkActive="active-link"
             (click)="closeNav()"
           >
-            <a> &nbsp; Application </a>
+            <a class="li-class"> &nbsp; Application </a>
           </li>
           <li
             class="side-btn"
@@ -58,7 +64,7 @@
             routerLinkActive="active-link"
             (click)="closeNav()"
           >
-            <a> &nbsp; Model </a>
+            <a class="li-class"> &nbsp; Model </a>
           </li>
           <li
             class="side-btn"
@@ -70,30 +76,35 @@
             routerLinkActive="active-link"
             (click)="closeNav()"
           >
-            <a> &nbsp; CAPK </a>
+            <a class="li-class"> &nbsp; CAPK </a>
           </li>
         </ul>
 
         <div></div>
       </div>
     </links>
-  </mdb-sidenav> -->
+  </mdb-sidenav>
   <!--/. Sidebar navigation -->
 
   <!-- Navbar -->
-  <!-- <mdb-navbar SideClass="navbar double-nav fixed-top" [containerInside]="false">
-    <navlinks class="navbar-container navbar-style px-4"> -->
-  <!-- SideNav slide-out button -->
-  <!-- <div class="bar-style">
-        <a (click)="sidenav.show()" class="button-collapse">
-          <i class="fa fa-bars"></i> -->
+  <mdb-navbar SideClass="navbar double-nav fixed-top" [containerInside]="false">
+    <navlinks class="navbar-container navbar-style px-4"> 
+
+  <div class="bar-style">
+        <a (click)="sidenav.show()" class="button-collapse " style="display: flex; align-items: center;">
+          <i class="fa fa-bars"></i> 
   <!-- <div class="logo-style ml-1 mr-5" style="display: inline-block">
-         
+   
+      <a href="/" class="m-0 p-0"
+        ><img src="../../../assets/img/logo.png" class="img-fluid"
+      /></a>
+      <p class="logo-text">Terminal Management System</p>
+  
           </div> -->
-  <!-- </a>
-      </div> -->
-  <!--/. SideNav slide-out button -->
-  <!-- </navlinks>
+   </a>
+      </div> 
+ 
+  </navlinks>
 
     <navlinks class="nav-style">
       <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav">
@@ -118,12 +129,12 @@
         </li>
       </ul>
     </navlinks>
-  </mdb-navbar> -->
+  </mdb-navbar>
   <!--/. Navbar -->
   <!-- navbar -->
   <!-- Image and text -->
 
-  <navbar class="navbar">
+  <!-- <navbar class="navbar">
     <div class="navbar-brand">
       <img src="../../../assets/img/logo.png" class="img-fluid" />
       <p>Terminal Management System</p>
@@ -142,9 +153,9 @@
         Ademola
       </p>
     </div>
-  </navbar>
+  </navbar> -->
   <!-- sidebar -->
-  <links class="sidebar">
+  <!-- <links class="sidebar">
     <div class="menu-items">
       <ul>
         <li
@@ -210,6 +221,6 @@
         </li>
       </ul>
     </div>
-  </links>
+  </links> -->
 </header>
 <!--/.Double navigation-->

@@ -12,11 +12,11 @@
 main {
   flex: 1 0 auto;
   min-height: 100%;
-  padding: 5rem 1rem 2rem 10rem;
+  /* padding: 5rem 1rem 2rem 10rem; */
   background-color: #ffffff;
 }
 
-/* :host ::ng-deep div.mydp.picker {
+:host ::ng-deep div.mydp.picker {
   z-index: 98;
 }
 
@@ -26,4 +26,4 @@ main {
 
 :host ::ng-deep mdb-select {
   z-index: 99;
-} */
+}

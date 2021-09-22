@@ -240,22 +240,27 @@ body {
   background-color: #fff;
   border-radius: 0px 6px 6px 0px;
   width: 200px;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 0;
+  margin-top: 30px;
 }
 .white-skin .side-nav .collapsible li :hover {
-  background-color: rgba(101, 0, 224, 0.05);
+  background-color: #fff;
   color: #4b709a;
+  border-radius: 20px 0px 0px 20px;
 }
 .white-skin .side-nav .collapsible li a img {
   width: 10%;
 }
 
 .active-link a {
-  background-color: rgba(101, 0, 224, 0.05) !important;
-  color: #5dcc96 !important;
-  border-left: 3px solid #5dcc96;
-  transform: translate(20px);
+  color: #4b709a !important;
+  background-color: #fff;
+  border-radius: 20px 0px 0px 20px;
+  // /* width: 200px; */
+  // padding: 2px;
+  // margin-top: 40px;
+  // margin-left: 18px;
+  // transform: translate(20px);
   // background-color: #fff;
   // border-radius: 0px 4px 4px 0px;
   // width: 200px;
@@ -263,24 +268,30 @@ body {
   // margin-top: 10px;
 }
 
-.active-link a img {
-  -webkit-filter: invert(23%) sepia(93%) saturate(7064%) hue-rotate(269deg)
-    brightness(78%) contrast(134%);
-  filter: invert(23%) sepia(93%) saturate(7064%) hue-rotate(269deg)
-    brightness(78%) contrast(134%);
-  width: 10%;
-}
+// .active-link a img {
+//   -webkit-filter: invert(23%) sepia(93%) saturate(7064%) hue-rotate(269deg)
+//     brightness(78%) contrast(134%);
+//   filter: invert(23%) sepia(93%) saturate(7064%) hue-rotate(269deg)
+//     brightness(78%) contrast(134%);
+//   width: 10%;
+// }
 
 .bold-text {
   font-weight: 500;
 }
 
-.side-nav .collapsible a {
-  color: #000;
+// .side-nav .collapsible a {
+//   color: #000;
+// }
+.white-skin .side-nav .collapsible li {
+  background-color: transparent;
+  border-radius: 0px 6px 6px 0px;
+  width: 200px;
+  padding: 10px;
+  margin-top: 10px;
 }
-
 .white-skin .side-nav {
-  background-color: #fff;
+  background-color: $base-color;
 }
 .card.card-cascade .view.view-cascade {
   box-shadow: unset !important;
@@ -293,7 +304,13 @@ body {
   // margin: 0px 5px !important;
   border-radius: 0.25rem !important;
 }
-
+// background-color: #fff;
+// border-radius: 20px 0px 0px 20px;
+// /* width: 200px; */
+// padding: 2px;
+// margin-top: 40px;
+// margin-left: 18px;
+// }
 .white-skin .side-nav .collapsible .card .card-header a:hover {
   border: 0px !important;
   background-color: unset !important;
@@ -539,7 +556,7 @@ td {
 }
 
 .side-nav {
-  width: 15rem !important;
+  width: 12rem !important;
 }
 
 .invoice-box .title img {
@@ -1635,4 +1652,11 @@ label.btn input[type="radio"]:not(:checked) + label:after {
 .md-pills .nav-link.active {
   background-color: $base-color !important;
   font-weight: bold;
+}
+.side-nav a {
+  display: block;
+  font-size: 1rem;
+  height: 43px !important;
+  line-height: 56px;
+  padding-left: 20px;
 }
