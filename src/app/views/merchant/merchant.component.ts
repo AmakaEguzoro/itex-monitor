@@ -15,7 +15,7 @@ export class MerchantComponent implements OnInit {
   arr: any[] = [];
   newarr: any[] = [];
   details: any;
-
+  unassignedstat: any[] = [];
   tableData: any[] = [];
 
   page = 1;
@@ -28,7 +28,9 @@ export class MerchantComponent implements OnInit {
   end: string;
 
   merchants: any;
-
+  masterSelected:boolean;
+  checklist:any;
+  checkedList:any;
   constructor(
     private payvueservice: PayVueApiService,
     private toast: ToastService
@@ -66,5 +68,49 @@ export class MerchantComponent implements OnInit {
         this.isLoading = false;
         // this.itemCount = 1;
       });
+  }
+
+
+  // checkUncheckAll() {
+  //   for (var i = 0; i < this.unassignedstat.length; i++) {
+  //     this.unassignedstat[i] = this.masterSelected;
+  //   }
+  //   // this.getCheckedItemList();
+  //   console.log(this.masterSelected)
+  // }
+
+  
+
+  // // Get List of Checked Items
+  // getCheckedItemList(){
+  //   this.checkedList = [];
+  //   for (var i = 0; i < this.checklist.length; i++) {
+  //     if(this.checklist[i].isSelected)
+  //     this.checkedList.push(this.checklist[i]);
+  //   }
+  //   this.checkedList = JSON.stringify(this.checkedList);
+  // }
+
+  getUnassigned(status,serial,id,all){
+    this.all!=status?status=this.all:status=this.all
+    if (status){
+
+this.arr.push({id,serial})
+    }
+    else if(!status){
+   this.arr=   this.arr.filter((item)=>item.id!==id)
+    } 
+
+  }
+  selectAll(){
+   
+  }
+  all:boolean
+  checkAll(){
+    for(var i=0; i<this.merchants.length;i++){
+      this.all=true
+      console.log("here")
+    }
+    
   }
 }

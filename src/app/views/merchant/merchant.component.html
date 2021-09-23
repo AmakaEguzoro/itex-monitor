@@ -63,7 +63,7 @@
   <br />
 
   <!-- flexicon  -->
-  <table class="flexicon">
+  <table class="flexicon col-lg-12">
     <tr class="flex-cont row">
       <td class="icons">
         <img
@@ -118,6 +118,8 @@
                 type="checkbox"
                 class="checkbox-style"
                 id="tableDefaultCheck2"
+                (click)="checkAll()"
+                [(ngModel)]="all"
               />
             </div>
           </th>
@@ -160,7 +162,7 @@
         >
           <td>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="checkbox-style" />
+              <input type="checkbox" class="checkbox-style" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected)"  />
               <!-- <label class="custom-control-label" for="tableDefaultCheck2">Check 2</label> -->
             </div>
             <!-- <input type="checkbox" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected, row.serialNumber)">  -->
