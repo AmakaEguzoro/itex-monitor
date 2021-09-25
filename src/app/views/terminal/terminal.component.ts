@@ -119,7 +119,6 @@ this.arr=[]
     }
     this.isData = undefined;
 
-    let page = this.page < 1 ? 1 : this.page;
 let id=this.arr[0].id
 
     const apiURL = `terminal/get-single-terminal/${id}`;
