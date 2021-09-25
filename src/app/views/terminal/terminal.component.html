@@ -1,4 +1,4 @@
-<
+
 <div class="">
   <!-- main dashboard -->
 
@@ -85,18 +85,18 @@
   <!-- flexicons  -->
   <table class="flexicon">
     <tr class="flex-cont row">
-      <td class="icons">
+      <td class="icons"  (click)="getTerminal(viewModal)">
         <img
           class="flexicon-image img-responsive"
           src="../../../assets/img/web.svg"
-          (click)="viewModal.show()"
+         
         /><a>View</a>
       </td>
-      <td class="icons">
+      <td class="icons"   (click)="addModal.show();">
         <img
           class="flexicon-image img-responsive"
           src="../../../assets/img/ui.svg"
-          (click)="addModal.show()"
+        
         /><a>Add</a>
       </td>
       <td class="icons">
@@ -106,19 +106,19 @@
           (click)="editModal.show()"
         /><a>Edit</a>
       </td>
-      <td class="icons">
+      <td class="icons" (click)="deleteTerminal()">
         <img
           class="flexicon-image img-responsive"
           src="../../../assets/img/rubbish-can.svg"
         /><a>Delete</a>
       </td>
-      <td class="icons">
+      <td class="icons" (click)="toogleStatus()">
         <img
           class="flexicon-image img-responsive"
           src="../../../assets/img/open.svg"
         /><a>Enable</a>
       </td>
-      <td class="icons">
+      <td class="icons" (click)="toogleStatus()">
         <img
           class="flexicon-image img-responsive"
           src="../../../assets/img/closed.svg"
@@ -176,6 +176,8 @@
                 type="checkbox"
                 class="checkbox-style"
                 id="tableDefaultCheck2"
+                (change)="checkAll()"
+                [(ngModel)]="masterSelected"
               />
             </div>
           </th>
@@ -232,12 +234,12 @@
       <!--Table body-->
       <tbody>
         <tr
-          *ngFor="let row of merchants; let i = index"
+          *ngFor="let row of terminals; let i = index"
           style="text-align: center"
         >
           <td>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="checkbox-style" />
+              <input type="checkbox" class="checkbox-style" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected,row.id)" />
               <!-- <label class="custom-control-label" for="tableDefaultCheck2">Check 2</label> -->
             </div>
             <!-- <input type="checkbox" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected, row.serialNumber)">  -->
@@ -343,7 +345,32 @@
   </div>
 </div>
 
-<!-- view terminal model -->
+<!-- view terminal model
+
+application: {id: 1, name: "Tamslite1", modelId: 1, applicationVersion: "7.0.09", programFileName: "Tamslite1",…}
+applicationId: 1
+archived: false
+capkId: 1
+caption: null
+createdAt: "2021-09-14T03:26:51.885Z"
+description: null
+downloadId: 1
+expirationDate: null
+firmware: {id: 1, name: "Font_firmware 1.0.1", modelId: 1, firmwareFile: "FONT_EUR_INT_01(1 parafile).bin",…}
+firmwareId: 1
+id: 1
+isDeleteAllApplications: false
+limitDownloadInterval: 0
+limitDownloadTime: 0
+modelId: 2
+notDownloadEDCParameters: false
+notDownloadENVParameters: false
+removable: true
+startDate: null
+status: "active"
+terminalID: "65734trw"
+
+-->
 <div
   mdbModal
   #viewModal="mdbModal"
@@ -355,96 +382,248 @@
   aria-hidden="true"
   [config]="{ backdrop: true, ignoreBackdropClick: false }"
 >
-  <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
-    <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">View Modal</h4>
-        <div>
-          <button
-            type="button"
-            class="close mr-1 unset-close"
-            aria-label="Close"
-            data-dismiss="modal"
-            (click)="basicModal.hide()"
-            mdbWavesEffect
-          >
-            x
-          </button>
-        </div>
-      </div> -->
-
-      <div>
-        <!-- modal head -->
+  <div class="modal-dialog modal-dialog-scrollable wider modal-fluid" role="document" *ngIf="terminal">
+    <div class="modal-content" *ngIf="terminal">
+      <div class="modal-header">
         <div class="header">
           <p>View Terminal</p>
         </div>
+        <div>
+          <button type="button" class="btn btn-uc btn-sm waves-light" aria-label="Close"
+          data-dismiss="modal" style="    color: red !important;
+      background-color: white !important;
+      
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      text-align: center;
+      border: 1px solid !important;
+      " (click)="viewModal.hide()" mdbWavesEffect><i class="fas fa-times"
+              style="text-align: center; align-self: center; "></i>
+      </button>
+
+        </div>
+      </div>
+
+     
+        <!-- modal head -->
+        
 
         <br />
         <!-- modal body -->
-        <div class="container modal-body">
-          <div class="row">
-            <div class="col-md-6 terminal-id">
-              Terminal ID
-              <input type="text" class="form-control input-id-modal" />
-            </div>
-            <div class="col-md-6 model-name">
-              Model
-              <input type="text" class="form-control input-model-modal" />
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-4 terminal-caption">
-              Caption
-              <input type="text" class="form-control caption" />
-            </div>
-            <div class="col-md-8 terminal-description">
-              Description
-              <input type="text" class="form-control description" />
-            </div>
-          </div>
-          <hr class="dotted" />
-          <div class="row">
-            <div class="col-md-6 selections">
-              <input type="checkbox" id="selectAll" />
-              Limit download time
-              <br />
-              No download ENV parameter
-              <p>Yes</p>
-            </div>
+        <div class="modal-body">
+          <div class="table-responsive">
 
-            <div class="col-md-6 selections">
-              <input type="checkbox" id="selectAll" />
-              Limit download interval
-              <br />
-              No download ENV parameter
-              <p>No</p>
-            </div>
-          </div>
-          <hr class="dotted" />
+         
           <div class="row">
-            <div class="col-md-6 start-terminal">
-              Start date/time
-              <input type="text" class="form-control input-period" />
-            </div>
-            <div class="col-md-6 terminal-expiration">
-              Expiration date/time
-              <input type="text" class="form-control input-expiration" />
-            </div>
+              <!--first column--> 
+            <div class="col-lg-6">
+
+            
+            <div class="py-1">
+              <div class="row input-style">
+                  <p class="col-lg-6 no-change m-0 title col-4">Terminal ID</p>
+                  <p class="col-lg-6 no-change m-0 subtitle col-8">
+                      {{terminal.terminalID}}</p>
+              </div>
           </div>
-          <br />
-          <div class="selections">
-            <input type="checkbox" id="selectAll" class="delete-application" />
-            Delete Application
+          <br>
+          <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Model ID</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.modelId}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Caption </p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.caption || 'null'}}</p>
+            </div>
+        </div> 
+        <br> 
+           <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Application Name</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.application.name}}</p>
+            </div>
+        </div> 
+        <br>
+        <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Application Model ID</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.application.modelId}}</p>
+            </div>
+        </div>
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Created At</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.createdAt}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Limit Download Time</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.limitDownloadTime}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">notDownload EDCParameters</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.notDownloadEDCParameters}}</p>
+            </div>
+        </div>
+        <br>
+        <!-- <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">notDownload EDCParameters</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.notDownloadEDCParameters}}</p>
+            </div>
+        </div> -->
+        <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Removable</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.removable}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Start Date</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.startDate || 'null'}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Status</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.status}}</p>
+            </div>
+        </div>
+        <br>
+      </div>  
+     
+      <!--second column--> 
+       <div class="col-lg-6">
+
+            
+            <div class="py-1">
+              <div class="row input-style">
+                  <p class="col-lg-6 no-change m-0 title col-4">Application ID</p>
+                  <p class="col-lg-6 no-change m-0 subtitle col-8">
+                      {{terminal.applicationId}}</p>
+              </div>
           </div>
+          <br>
+          <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Firmware ID</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.firmwareId}}</p>
+            </div>
+        </div>  
+        <br>
+           <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Description</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.description || 'null'}}</p>
+            </div>
+        </div> 
+        <br>
+        <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Firmware Name</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.firmware.name}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Firmware Model ID</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.firmware.modelId}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Updated At</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.updatedAt}}</p>
+            </div>
+        </div> 
+        <br>
+        <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Limit Download Interval</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.limitDownloadInterval}}</p>
+            </div>
+        </div>
+        <br>
+        <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">notDownload ENVParameters</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.notDownloadENVParameters}}</p>
+            </div>
+        </div>
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Archived</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.archived}}</p>
+            </div>
+        </div> 
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Expiration Date</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.expirationDate || 'null'}}</p>
+            </div>
+        </div>
+        <br>
+         <div class="py-1">
+            <div class="row input-style">
+                <p class="col-lg-6 no-change m-0 title col-4">Delete All Application</p>
+                <p class="col-lg-6 no-change m-0 subtitle col-8">
+                    {{terminal.isDeleteAllApplications}}</p>
+            </div>
+        </div>
+        <br>
+      </div>
+   
+          </div>
+        </div>   
         </div>
         <hr />
         <!-- modal footer -->
+        <div class="modal-footer">
+       
         <div class="buttons">
-          <button type="button" class="btn back-btn">Back</button>
-          <button type="button" class="btn done-btn">Done</button>
+         
+          <button type="button" class="btn done-btn" (click)="viewModal.hide()">Done</button>
         </div>
       </div>
+      
     </div>
   </div>
 </div>

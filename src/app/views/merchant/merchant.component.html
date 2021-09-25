@@ -20,12 +20,10 @@
         </select>
       </div>
 
-      <div class="col-lg-3"></div>
-
       <!-- filter -->
-      <div class="col-lg-6">
+      <div class="col-lg-9">
         <div class="row">
-          <div class="merchant-number">
+          <div class="merchant-number col-lg-3">
             <p>Contact</p>
             <input
               class="form-control my-0 py-0 phone-number"
@@ -35,7 +33,7 @@
               placeholder=""
             />
           </div>
-          <div class="merchant-name">
+          <div class="merchant-name col-lg-3">
             <p>Merchant Name</p>
             <input
               class="form-control my-0 py-0 input-name"
@@ -45,7 +43,7 @@
               placeholder=""
             />
           </div>
-          <div class="merchant-status">
+          <div class="merchant-status col-lg-3">
             <p>Status</p>
             <input
               class="form-control my-0 py-0 input-status"
@@ -118,8 +116,8 @@
                 type="checkbox"
                 class="checkbox-style"
                 id="tableDefaultCheck2"
-                (click)="checkAll()"
-                [(ngModel)]="all"
+                (change)="checkAll()"
+                [(ngModel)]="masterSelected"
               />
             </div>
           </th>
@@ -162,7 +160,7 @@
         >
           <td>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="checkbox-style" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected)"  />
+              <input type="checkbox" class="checkbox-style" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected,row.merchantID)"  />
               <!-- <label class="custom-control-label" for="tableDefaultCheck2">Check 2</label> -->
             </div>
             <!-- <input type="checkbox" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected, row.serialNumber)">  -->

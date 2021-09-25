@@ -38,6 +38,7 @@ export class MerchantComponent implements OnInit {
 
   ngOnInit() {
     this.getMerchants();
+    this.arr=[]
   }
 
   getMerchants() {
@@ -91,26 +92,61 @@ export class MerchantComponent implements OnInit {
   //   this.checkedList = JSON.stringify(this.checkedList);
   // }
 
-  getUnassigned(status,serial,id,all){
-    this.all!=status?status=this.all:status=this.all
+  getUnassigned(status,id){
     if (status){
+      if(this.arr.includes(id)){
+        return
+      }else{
+        this.arr.push({id})
+      }
 
-this.arr.push({id,serial})
     }
     else if(!status){
    this.arr=   this.arr.filter((item)=>item.id!==id)
     } 
-
+    console.log(this.arr,"arr")
   }
-  selectAll(){
-   
-  }
+ 
   all:boolean
   checkAll(){
     for(var i=0; i<this.merchants.length;i++){
-      this.all=true
-      console.log("here")
+      this.merchants[i].isSelected = this.masterSelected;
+      if(this.masterSelected){
+      console.log("true")
+      this.arr.push({id:this.merchants[i].merchantID})
+      // this.merchants.map(merchant=>{
+      //   
+      // })
+     
+      }
+      else{
+        console.log("false")
+
+      }
     }
+    console.log(this.arr,"array")
+  }
+
+  addMerchant(){
+
+  }
+
+  editMerchant(){
+
+  }
+  deleteMerchants(){
+
+  }
+  viewMerchant(){
+
+  }
+  restoreMerchant(){
+
+  }
+  deleteContact(){
+
+  }
+  editContact(){
     
   }
 }

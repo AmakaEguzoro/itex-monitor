@@ -1660,3 +1660,16 @@ label.btn input[type="radio"]:not(:checked) + label:after {
   line-height: 56px;
   padding-left: 20px;
 }
+.modal-footer {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  justify-content: center !important;
+  padding: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+.modal-header {
+  padding: 0;
+}
