@@ -1673,3 +1673,43 @@ label.btn input[type="radio"]:not(:checked) + label:after {
 .modal-header {
   padding: 0;
 }
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  border: 16px solid white;
+  border-radius: 50%;
+  border-top: 16px solid $base-color2;
+  border-right: 16px solid $base-color !important;
+  border-bottom: 16px solid white;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+
+  margin: -75px 0 0 -75px;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

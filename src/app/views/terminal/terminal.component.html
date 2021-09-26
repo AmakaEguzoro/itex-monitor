@@ -1,4 +1,5 @@
 
+<div class="loader" *ngIf="loading"></div>
 <div class="">
   <!-- main dashboard -->
 
@@ -85,7 +86,7 @@
   <!-- flexicons  -->
   <table class="flexicon">
     <tr class="flex-cont row">
-      <td class="icons"  (click)="getTerminal(viewModal)">
+      <td class="icons"  (click)="getTerminal(viewModal,false)">
         <img
           class="flexicon-image img-responsive"
           src="../../../assets/img/web.svg"
@@ -99,11 +100,11 @@
         
         /><a>Add</a>
       </td>
-      <td class="icons">
+      <td class="icons"  (click)="getTerminal(addModal,true)">
         <img
           class="flexicon-image img-responsive"
           src="../../../assets/img/archive.svg"
-          (click)="editModal.show()"
+         
         /><a>Edit</a>
       </td>
       <td class="icons" (click)="deleteTerminal()">
@@ -171,7 +172,7 @@
       <thead>
         <tr style="text-align: center">
           <th>
-            <div class="custom-control custom-checkbox">
+            <div class="custom-control custom-checkbox center">
               <input
                 type="checkbox"
                 class="checkbox-style"
@@ -238,7 +239,7 @@
           style="text-align: center"
         >
           <td>
-            <div class="custom-control custom-checkbox">
+            <div class="custom-control custom-checkbox center">
               <input type="checkbox" class="checkbox-style" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected,row.id)" />
               <!-- <label class="custom-control-label" for="tableDefaultCheck2">Check 2</label> -->
             </div>
@@ -345,32 +346,7 @@
   </div>
 </div>
 
-<!-- view terminal model
 
-application: {id: 1, name: "Tamslite1", modelId: 1, applicationVersion: "7.0.09", programFileName: "Tamslite1",…}
-applicationId: 1
-archived: false
-capkId: 1
-caption: null
-createdAt: "2021-09-14T03:26:51.885Z"
-description: null
-downloadId: 1
-expirationDate: null
-firmware: {id: 1, name: "Font_firmware 1.0.1", modelId: 1, firmwareFile: "FONT_EUR_INT_01(1 parafile).bin",…}
-firmwareId: 1
-id: 1
-isDeleteAllApplications: false
-limitDownloadInterval: 0
-limitDownloadTime: 0
-modelId: 2
-notDownloadEDCParameters: false
-notDownloadENVParameters: false
-removable: true
-startDate: null
-status: "active"
-terminalID: "65734trw"
-
--->
 <div
   mdbModal
   #viewModal="mdbModal"
@@ -628,7 +604,7 @@ terminalID: "65734trw"
   </div>
 </div>
 
-<!-- add terminal modal -->
+<!-- add & edit terminal modal -->
 <div
   mdbModal
   #addModal="mdbModal"
@@ -642,200 +618,149 @@ terminalID: "65734trw"
 >
   <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
     <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">View Modal</h4>
-        <div>
-          <button
-            type="button"
-            class="close mr-1 unset-close"
-            aria-label="Close"
-            data-dismiss="modal"
-            (click)="basicModal.hide()"
-            mdbWavesEffect
-          >
-            x
-          </button>
-        </div>
-      </div> -->
-
-      <div>
-        <!-- modal head -->
+      <div class="modal-header">
         <div class="header">
-          <p>Add Terminal</p>
+          <p *ngIf="!edit">Add Terminal</p>
+          <p *ngIf="edit">Edit Terminal</p>
         </div>
+        <div>
+          <button type="button" class="btn btn-uc btn-sm waves-light" aria-label="Close"
+          data-dismiss="modal" style="    color: red !important;
+      background-color: white !important;
+      
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      text-align: center;
+      border: 1px solid !important;
+      " (click)="addModal.hide()" mdbWavesEffect><i class="fas fa-times"
+              style="text-align: center; align-self: center; "></i>
+      </button>
 
-        <br />
-        <!-- modal body -->
-        <div class="container modal-body">
+        </div>
+      </div>
+ <!-- modal body -->
+      <div class="modal-body"> 
+        <div class="table-responsive">
           <div class="row">
-            <div class="col-md-6 terminal-id">
-              Terminal ID
-              <input type="text" class="form-control input-id-modal" />
-            </div>
-            <div class="col-md-6 model-name">
-              Model
-              <input type="text" class="form-control input-model-modal" />
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-4 terminal-caption">
-              Caption
-              <input type="text" class="form-control caption" />
-            </div>
-            <div class="col-md-8 terminal-description">
-              Description
-              <input type="text" class="form-control description" />
-            </div>
-          </div>
-          <hr class="dotted" />
-          <div class="row">
-            <div class="col-md-6 selections">
-              <input type="checkbox" id="selectAll" />
-              Limit download time
-              <br />
-              No download ENV parameter
-              <p>Yes</p>
-            </div>
+            <div class="col-lg-6">
+              <br>
+              <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Terminal ID</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="terminalId" name="terminalId"
+                    type="text" />
 
-            <div class="col-md-6 selections">
-              <input type="checkbox" id="selectAll" />
-              Limit download interval
-              <br />
-              No download ENV parameter
-              <p>No</p>
+                </div>
+            </div>  
+            <br>
+             <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Application ID</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="applicationId" name="applicationId"
+                    type="text" />
+
+                </div>
+            </div>  
+            <br>    
+                 <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">CAPK ID</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="capkId" name="capkId"
+                    type="text" />
+
+                </div>
+            </div> 
+            <br>
+            <div class="py-1">
+              <div class="row input-style">
+                  <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Start Date</p>
+                  <input class="col-lg-8 form-control my-0 py-0"
+                  [ngModelOptions]="{standalone: true}" ngDefaultControl
+                  [(ngModel)]="startDate" name="startDate" value="startDate"
+                  type="date" />
+
+              </div>
+          </div>
+          <br>
+            <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Description</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="description" name="description"
+                    type="text" />
+
+                </div>
+            </div>   
+            <br>
+            </div>
+            <div class="col-lg-6">
+              <br>
+              <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Model ID</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="modelId" name="modelId"
+                    type="text" />
+
+                </div>
+            </div>  
+            <br> 
+             <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Firmware ID</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="firmwareId" name="firmwareId"
+                    type="text" />
+
+                </div>
+            </div> 
+            <br>
+             <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Caption</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="caption" name="caption"
+                    type="text" />
+
+                </div>
+            </div>  
+            <br>
+             <div class="py-1">
+                <div class="row input-style">
+                    <p class="col-lg-6 no-change m-0 title col-4 p-input-style">Expiration Date</p>
+                    <input class="col-lg-8 form-control my-0 py-0"
+                    [ngModelOptions]="{standalone: true}" ngDefaultControl
+                    [(ngModel)]="expDate" name="expDate" value="expDate"
+                    type="date" />
+
+                </div>
+            </div>
+            <br>
             </div>
           </div>
-          <hr class="dotted" />
-          <div class="row">
-            <div class="col-md-6 start-terminal">
-              Start date/time
-              <input type="text" class="form-control input-period" />
-            </div>
-            <div class="col-md-6 terminal-expiration">
-              Expiration date/time
-              <input type="text" class="form-control input-expiration" />
-            </div>
-          </div>
-          <br />
-          <div class="selections">
-            <input type="checkbox" id="selectAll" class="delete-application" />
-            Delete Application
-          </div>
+         
         </div>
         <hr />
         <!-- modal footer -->
         <div class="buttons">
-          <button type="button" class="btn back-btn">Back</button>
-          <button type="button" class="btn done-btn">Done</button>
+          <button type="button" class="btn back-btn" (click)="addModal.hide()">Close</button>
+          <button type="button" class="btn done-btn" (click)="addTerminal()" *ngIf="!edit">Proceed</button> 
+          <button type="button" class="btn done-btn" (click)="editTerminal()" *ngIf="edit">Edit</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- edit terminal modal -->
-<div
-  mdbModal
-  #editModal="mdbModal"
-  class="modal fade"
-  style="overflow: auto"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myBasicModalLabel"
-  aria-hidden="true"
-  [config]="{ backdrop: true, ignoreBackdropClick: false }"
->
-  <div class="modal-dialog modal-dialog-scrollable modal-fluid" role="document">
-    <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">View Modal</h4>
-        <div>
-          <button
-            type="button"
-            class="close mr-1 unset-close"
-            aria-label="Close"
-            data-dismiss="modal"
-            (click)="basicModal.hide()"
-            mdbWavesEffect
-          >
-            x
-          </button>
-        </div>
-      </div> -->
 
-      <div>
-        <!-- modal head -->
-        <div class="header">
-          <p>Edit Terminal</p>
-        </div>
-
-        <br />
-        <!-- modal body -->
-        <div class="container modal-body">
-          <div class="row">
-            <div class="col-md-6 terminal-id">
-              Terminal ID
-              <input type="text" class="form-control input-id-modal" />
-            </div>
-            <div class="col-md-6 model-name">
-              Model
-              <input type="text" class="form-control input-model-modal" />
-            </div>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-md-4 terminal-caption">
-              Caption
-              <input type="text" class="form-control caption" />
-            </div>
-            <div class="col-md-8 terminal-description">
-              Description
-              <input type="text" class="form-control description" />
-            </div>
-          </div>
-          <hr class="dotted" />
-          <div class="row">
-            <div class="col-md-6 selections">
-              <input type="checkbox" id="selectAll" />
-              Limit download time
-              <br />
-              No download ENV parameter
-              <p>Yes</p>
-            </div>
-
-            <div class="col-md-6 selections">
-              <input type="checkbox" id="selectAll" />
-              Limit download interval
-              <br />
-              No download ENV parameter
-              <p>No</p>
-            </div>
-          </div>
-          <hr class="dotted" />
-          <div class="row">
-            <div class="col-md-6 start-terminal">
-              Start date/time
-              <input type="text" class="form-control input-period" />
-            </div>
-            <div class="col-md-6 terminal-expiration">
-              Expiration date/time
-              <input type="text" class="form-control input-expiration" />
-            </div>
-          </div>
-          <br />
-          <div class="selections">
-            <input type="checkbox" id="selectAll" class="delete-application" />
-            Delete Application
-          </div>
-        </div>
-        <hr />
-        <!-- modal footer -->
-        <div class="buttons">
-          <button type="button" class="btn back-btn">Back</button>
-          <button type="button" class="btn done-btn">Done</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
