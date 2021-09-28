@@ -149,10 +149,11 @@ if(status){
   this.modelId=this.terminal.modelId
   this.caption=this.terminal.caption
   this.description=this.terminal.description
-  this.startDate=this.terminal.startDate
-  this.expDate=this.terminal.expirationDate
+  this.startDate=new Date(this.terminal.startDate).toLocaleDateString('en-GB')
+  this.expDate=new Date(this.terminal.expirationDate).toLocaleDateString('en-GB')
 
 }
+console.log(this.expDate,"exp date")
           this.isData = true;
           this.loading = false;
 
@@ -227,6 +228,8 @@ let id=this.arr[0].id
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
+          this.arr=[]
+          this.masterSelected=false
          this.getTerminals()
          
 this.toast.success(data.message)
