@@ -1,0 +1,16 @@
+.row {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.not-found {
+  height: 90vh;
+  background: var(--body-color);
+}
+.not-heading {
+  font-weight: 900;
+  color: var(--text-color);
+}

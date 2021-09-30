@@ -1,0 +1,84 @@
+<header>
+  <section class="view intro intro-2">
+    <div class="full-bg-img mask flex-center">
+      <div class="container">
+        <div class="row" style="display: flex; justify-content: center">
+          <div class="col-lg-7" style="align-self: center"></div>
+          <div
+            class="resize"
+            style="border-right: 1px solid #5322db; height: auto; width: 1px"
+          ></div>
+          <div
+            class="col-xl-4 col-lg-8 col-md-12 col-sm-12 mx-auto mt-lg-5 mb-5"
+          >
+            <!--Form with header-->
+            <div
+              class="wow fadeIn mb-3"
+              data-wow-delay="0.3s"
+              style="animation-name: none; visibility: visible"
+            >
+              <form #form="ngForm" (submit)="reset()">
+                <div class="card-body">
+                  <div>
+                    <h1
+                      class="mx-auto"
+                      style="text-align: center; color: #5322db"
+                    >
+                      Forgot Password
+                    </h1>
+                    <p class="mx-auto" style="text-align: center"></p>
+                  </div>
+                  <!--Body-->
+                  <form [formGroup]="userDetails">
+                    <div class="md-form">
+                      <input
+                        ngDefaultControl
+                        type="text"
+                        id="orangeForm-email"
+                        formControlName="email"
+                        class="form-control"
+                        placeholder="Your Email"
+                      />
+                      <span class="text-danger"
+                        >{{ errors.email_detail }} {{ errors.email }}</span
+                      >
+                    </div>
+                  </form>
+
+                  <div class="text-center pb-30">
+                    <button
+                      class="
+                        btn btn-style
+                        d-block
+                        w-100
+                        btn-ud btn-lg
+                        waves-effect waves-light
+                      "
+                      style="
+                        background-color: #5322db !important;
+                        border-radius: 10px !important;
+                      "
+                      mdbWavesEffect
+                    >
+                      Reset Password
+                      <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                    </button>
+                    <div class="text-left mt-2">
+                      remember your password?<a
+                        routerLink="/login"
+                        class="nav-link d-inline text-ud"
+                        style="font-weight: bold"
+                        >Login</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--/Form with header-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>

@@ -1,0 +1,133 @@
+// .intro-2 {
+//     background-color: #ffffff;
+//     background-size: cover;
+// }
+
+// .card {
+//     background: linear-gradient(360deg, #e7e4e447 20%, rgba(63, 114, 155, 0) 80%) !important;
+// }
+
+// .md-form label {
+//     color: #ffffff;
+// }
+
+// .intro {
+//     min-height: 100vh;
+//     position: relative;
+// }
+
+// input {
+//     background-color: #ffffff9e !important;
+// }
+
+// .md-form .form-control {
+//     padding: 0.375rem 0.75rem !important;
+// }
+
+// .new-style-font {
+//     font-weight: 500;
+//     color: #fff;
+//     font-size: 36px;
+// }
+
+// .white-skin .navbar {
+//     display: none !important
+// }
+
+// .btn-style {
+//     border-radius: unset !important;
+//     margin: 0 !important;
+//     font-weight: 500;
+//     font-size: 20px;
+//     text-transform: unset;
+// }
+
+// .pb-15 {
+//     padding-bottom: 15%
+// }
+
+// .pb-30 {
+//     padding-bottom: 30%
+// }
+
+// @media (min-width: 769px) {
+//     .resize{
+// text-align: center !important;
+//     }
+//   }
+
+//   @media (max-width: 1200px) {
+//     .resize{
+// display: none;
+// text-align: center;
+//     }}
+
+.bg {
+  background-image: url("../../../../assets/img/background.png");
+  width: 112%;
+  height: 70%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-top: 140px;
+  position: fixed;
+  left: 40px;
+}
+.form-signin {
+  position: absolute;
+  top: -15vh;
+  background: #fff;
+  padding: 50px;
+  box-shadow: 0px 3px 50px #4b709a19;
+  opacity: 1;
+  text-align: center;
+  width: 363px;
+  height: 378px;
+}
+.form-signin-heading {
+  margin-top: 10px;
+  margin-left: -15px;
+  margin-bottom: 50px;
+  text-align: left;
+  font-size: medium;
+  letter-spacing: 0px;
+  color: #4b709a;
+}
+.form-group {
+  max-width: 380px;
+  margin-top: -20px;
+  background-color: #fff;
+  padding: 10px 10px 10px;
+  border-radius: 10px;
+}
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  border-color: #4b709a;
+  size: 5px;
+  font-size: 13px;
+  height: 40px;
+}
+.btn {
+  background-color: #4b709a;
+  color: white;
+  font-size: 15px;
+  border-radius: 4px;
+  opacity: 1;
+  height: 40px;
+  width: 245px;
+  left: 10px;
+  position: relative;
+}
+::placeholder {
+  color: #4b709a;
+  font-size: 10px;
+}
+.welcome {
+  height: 70px;
+  max-width: 300px;
+  margin-top: -100px;
+  left: -200px;
+  text-align: left;
+  font-family: Poppins;
+  font-size: 20px;
+  color: #4b709a;
+}

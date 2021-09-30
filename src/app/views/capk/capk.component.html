@@ -1,0 +1,182 @@
+<div class="main">
+  <!-- main dashboard -->
+
+  <!-- cards -->
+  <!-- <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">100,000,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">134,000,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">14,000,000</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <p class="label">Number of terminals supported</p>
+          <p class="amount">500,000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <div class="row">
+    <div class="col-lg-6"></div>
+
+    <div class="col-lg-6 filter">
+      <div class="merchant-contact">
+        <input type="text" class="search-contact" placeholder="All Issuer" />
+      </div>
+      <div class="merchant-status">
+        <input
+          type="text"
+          class="search-status"
+          placeholder="Search by Terminal ID"
+        />
+      </div>
+      <button class="btn btn-block">Add Card Scheme</button>
+    </div>
+  </div>
+  <br /> -->
+  <br />
+  <br />
+  <!-- table -->
+  <div class="table-responsive">
+    <table class="table table-striped table-hover mb-0">
+      <!--Table head-->
+      <thead>
+        <tr style="text-align: center">
+          <th>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="checkbox-style"
+                id="tableDefaultCheck2"
+              />
+            </div>
+          </th>
+          <th class="th-md">S/N</th>
+
+          <th class="th-md">
+            <a (click)="sortBy('terminal_id')"
+              >TERMINAL ID
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+
+          <th class="th-md">
+            <a (click)="sortBy('merchant_id')"
+              >EXPONENT
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >ISSUER
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >RID INDEX
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >RID LIST
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >KEY LENGTH
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >SHAI
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >KEY TYPE
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+          <th class="th-md">
+            <a (click)="sortBy('printer_status')"
+              >EXPIRES
+              <i class="fa fa-sort ml-1"></i>
+            </a>
+          </th>
+        </tr>
+      </thead>
+
+      <!--Table body-->
+      <tbody>
+        <tr *ngFor="let row of capks; let i = index" style="text-align: center">
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="checkbox-style" />
+              <!-- <label class="custom-control-label" for="tableDefaultCheck2">Check 2</label> -->
+            </div>
+            <!-- <input type="checkbox" [(ngModel)]="row.isSelected" (change)="getUnassigned(row.isSelected, row.serialNumber)">  -->
+          </td>
+
+          <td>{{ serial + i }}</td>
+          <td>{{ row.id }}</td>
+          <td>{{ row.exponent }}</td>
+          <td>{{ row.issuer }}</td>
+          <td>{{ row.ridIndex }}</td>
+          <td>{{ row.ridList }}</td>
+          <td>{{ row.keyLength }}</td>
+          <td>{{ row.sha1 }}</td>
+          <td>{{ row.keyType }}</td>
+          <td>{{ row.expirationDate }}</td>
+        </tr>
+      </tbody>
+
+      <!--Table body-->
+      <tbody *ngIf="isData == false; else gettingData">
+        <tr>
+          <td colspan="15" style="text-align: center; padding: 5% 20%">
+            <strong>No Data Available</strong>
+          </td>
+        </tr>
+      </tbody>
+      <ng-template #gettingData>
+        <tbody *ngIf="isData == undefined">
+          <tr>
+            <td colspan="15" style="text-align: center; padding: 5% 20%">
+              <mdb-spinner spinnerColor="blue"></mdb-spinner>
+            </td>
+          </tr>
+        </tbody>
+      </ng-template>
+    </table>
+  </div>
+</div>
