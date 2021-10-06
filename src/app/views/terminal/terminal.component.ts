@@ -12,20 +12,20 @@ export class TerminalComponent implements OnInit {
   loading: boolean;
   date: string;
   status: any;
-  arr: any[]=[];
+  arr: any[] = [];
   newarr: any[] = [];
   details: any;
   unassignedstat: any[] = [];
   tableData: any[] = [];
-  masterSelected:boolean;
-  checklist:any;
-  checkedList:any;
+  masterSelected: boolean;
+  checklist: any;
+  checkedList: any;
   page = 1;
   limit = 50;
   serial = 0;
   isAdmin: boolean;
   isAgent: boolean;
-error:boolean=false
+  error: boolean = false;
   start: string;
   end: string;
 
@@ -37,10 +37,10 @@ error:boolean=false
   firmwareId: any;
   modelId: any;
   expDate: any;
- startDate:any
+  startDate: any;
   capkId: any;
-  caption:any;
-  description:any;
+  caption: any;
+  description: any;
   createdAt: any;
   id: any;
   edit: boolean;
@@ -53,46 +53,42 @@ error:boolean=false
   ngOnInit() {
     this.getTerminals();
   }
-  getUnassigned(status,id){
-    if (status){
-      if(this.arr.includes(id)){
-        return
-      }else{
-        this.arr.push({id})
+  getUnassigned(status, id) {
+    if (status) {
+      if (this.arr.includes(id)) {
+        return;
+      } else {
+        this.arr.push({ id });
       }
-
+    } else if (!status) {
+      this.arr = this.arr.filter((item) => item.id !== id);
     }
-    else if(!status){
-   this.arr=   this.arr.filter((item)=>item.id!==id)
-    } 
-    console.log(this.arr,"arr")
+    console.log(this.arr, "arr");
   }
- 
-  all:boolean
-  checkAll(){
-    for(var i=0; i<this.terminals.length;i++){
+
+  all: boolean;
+  checkAll() {
+    for (var i = 0; i < this.terminals.length; i++) {
       this.terminals[i].isSelected = this.masterSelected;
-      if(this.masterSelected){
-      console.log("true")
-      this.arr.push({id:this.terminals[i].merchantID})
-      // this.merchants.map(merchant=>{
-      //   
-      // })
-     
-      }
-      else{
-        console.log("false")
-this.arr=[]
+      if (this.masterSelected) {
+        console.log("true");
+        this.arr.push({ id: this.terminals[i].merchantID });
+        // this.merchants.map(merchant=>{
+        //
+        // })
+      } else {
+        console.log("false");
+        this.arr = [];
       }
     }
-    console.log(this.arr,"array")
+    console.log(this.arr, "array");
   }
 
   getTerminals() {
     this.isData = undefined;
 
     let page = this.page < 1 ? 1 : this.page;
-this.loading=true;
+    this.loading = true;
     const apiURL = `terminal/all-terminals`;
 
     this.payvueservice
@@ -106,7 +102,7 @@ this.loading=true;
           this.loading = false;
         } else {
           this.isData = false;
-          this.loading= false;
+          this.loading = false;
           // this.itemCount = 1;
         }
       })
@@ -117,16 +113,16 @@ this.loading=true;
         // this.itemCount = 1;
       });
   }
-  getTerminal(modal,status){
-    this.loading=true;
-    this.edit=status
-    if (this.arr.length!==1){
-      this.toast.warning("Please select one terminal")
-    return
+  getTerminal(modal, status) {
+    this.loading = true;
+    this.edit = status;
+    if (this.arr.length !== 1) {
+      this.toast.warning("Please select one terminal");
+      return;
     }
     this.isData = undefined;
 
-let id=this.arr[0].id
+    let id = this.arr[0].id;
 
     const apiURL = `terminal/get-single-terminal/${id}`;
 
@@ -136,29 +132,29 @@ let id=this.arr[0].id
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
           this.terminal = data.data;
-          modal.show()
-this.toast.success(data.message)
+          modal.show();
+          this.toast.success(data.message);
 
-console.log(this.terminal)
-if(status){
-  this.id=this.terminal.id
-  this.terminalId=this.terminal.terminalID
-  this.firmwareId=this.terminal.firmwareId
-  this.applicationId=this.terminal.applicationId
-  this.capkId=this.terminal.capkId
-  this.modelId=this.terminal.modelId
-  this.caption=this.terminal.caption
-  this.description=this.terminal.description
-  this.startDate=new Date(this.terminal.startDate).toLocaleDateString('en-GB')
-  this.expDate=new Date(this.terminal.expirationDate).toLocaleDateString('en-GB')
-
-}
-console.log(this.expDate,"exp date")
+          console.log(this.terminal);
+          if (status) {
+            this.id = this.terminal.id;
+            this.terminalId = this.terminal.terminalID;
+            this.firmwareId = this.terminal.firmwareId;
+            this.applicationId = this.terminal.applicationId;
+            this.capkId = this.terminal.capkId;
+            this.modelId = this.terminal.modelId;
+            this.caption = this.terminal.caption;
+            this.description = this.terminal.description;
+            this.startDate = new Date(
+              this.terminal.startDate
+            ).toLocaleDateString("en-GB");
+            this.expDate = new Date(
+              this.terminal.expirationDate
+            ).toLocaleDateString("en-GB");
+          }
+          console.log(this.expDate, "exp date");
           this.isData = true;
           this.loading = false;
-
-
-        
         } else {
           this.isData = false;
           this.loading = false;
@@ -172,15 +168,14 @@ console.log(this.expDate,"exp date")
         // this.itemCount = 1;
       });
   }
-  deleteTerminal(){
-    if (this.arr.length!==1){
-      this.toast.warning("Please select one terminal")
-    return
+  deleteTerminal() {
+    if (this.arr.length !== 1) {
+      this.toast.warning("Please select one terminal");
+      return;
     }
     this.isData = undefined;
 
-   
-let id=this.arr[0].id
+    let id = this.arr[0].id;
 
     const apiURL = `terminal/delete/${id}`;
 
@@ -189,14 +184,9 @@ let id=this.arr[0].id
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-         this.getTerminals()
-         
-this.toast.success(data.message)
+          this.getTerminals();
 
-         
-
-
-        
+          this.toast.success(data.message);
         } else {
           this.isData = false;
           this.loading = false;
@@ -211,33 +201,27 @@ this.toast.success(data.message)
       });
   }
 
-  toogleStatus(){
-    if (this.arr.length!==1){
-      this.toast.warning("Please select one terminal")
-    return
+  toogleStatus() {
+    if (this.arr.length !== 1) {
+      this.toast.warning("Please select one terminal");
+      return;
     }
     this.isData = undefined;
 
-   
-let id=this.arr[0].id
+    let id = this.arr[0].id;
 
     const apiURL = `terminal/toggle-status/${id}`;
 
     this.payvueservice
-      .apiCall(apiURL,'put')
+      .apiCall(apiURL, "put")
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-          this.arr=[]
-          this.masterSelected=false
-         this.getTerminals()
-         
-this.toast.success(data.message)
+          this.arr = [];
+          this.masterSelected = false;
+          this.getTerminals();
 
-         
-
-
-        
+          this.toast.success(data.message);
         } else {
           this.isData = false;
           this.loading = false;
@@ -252,117 +236,105 @@ this.toast.success(data.message)
       });
   }
 
-  addTerminal(){
+  addTerminal() {
+    if (!this.terminalId) this.error = true;
+    if (!this.applicationId) this.error = true;
+    if (!this.modelId) this.error = true;
+    if (!this.firmwareId) this.error = true;
+    if (!this.caption) this.error = true;
+    if (!this.description) this.error = true;
+    if (!this.startDate) this.error = true;
+    if (!this.expDate) this.error = true;
+    if (!this.capkId) this.error = true;
+    if (this.error) {
+      this.toast.warning("Please recheck input fields");
+    } else {
+      this.isData = undefined;
 
-if (!this.terminalId) this.error=true
-if (!this.applicationId) this.error=true
-if (!this.modelId) this.error=true
-if (!this.firmwareId) this.error=true
-if (!this.caption) this.error=true
-if (!this.description) this.error=true
-if (!this.startDate) this.error=true
-if (!this.expDate) this.error=true
-if(!this.capkId)this.error=true
-if(this.error){
-  this.toast.warning(
-    "Please recheck input fields")
-}else{
+      this.loading = true;
 
-
-
-    this.isData = undefined;
-
-   this.loading=true
-
-
-    const apiURL = `terminal/create`;
-const form={
-  modelId:this.modelId,
-  terminalID:this.terminalId,
-  caption:this.caption,
-  description:this.description,
-  startDate:this.startDate,
-  expirationDate:this.expDate,
-  applicationId:this.applicationId,
-  firmwareId:this.firmwareId,
-  capkId:this.capkId
-}
-    this.payvueservice
-      .apiCall(apiURL,'post',form)
-      .then((data) => {
-        if (data.status == 200) {
-          this.loading=true
-         this.getTerminals()   
-this.toast.success(data.message)      
-        } else {
+      const apiURL = `terminal/create`;
+      const form = {
+        modelId: this.modelId,
+        terminalID: this.terminalId,
+        caption: this.caption,
+        description: this.description,
+        startDate: this.startDate,
+        expirationDate: this.expDate,
+        applicationId: this.applicationId,
+        firmwareId: this.firmwareId,
+        capkId: this.capkId,
+      };
+      this.payvueservice
+        .apiCall(apiURL, "post", form)
+        .then((data) => {
+          if (data.status == 200) {
+            this.loading = true;
+            this.getTerminals();
+            this.toast.success(data.message);
+          } else {
+            this.isData = false;
+            this.loading = false;
+            // this.itemCount = 1;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
           this.isData = false;
           this.loading = false;
           // this.itemCount = 1;
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        this.isData = false;
-        this.loading = false;
-        // this.itemCount = 1;
-      });
-  }
+        });
+    }
   }
 
-  editTerminal(){
-    if (!this.terminalId) this.error=true
-    if (!this.applicationId) this.error=true
-    if (!this.modelId) this.error=true
-    if (!this.firmwareId) this.error=true
-    if (!this.caption) this.error=true
-    if (!this.description) this.error=true
-    if (!this.startDate) this.error=true
-    if (!this.expDate) this.error=true
-    if(!this.capkId)this.error=true
-    if(this.error){
-      this.toast.warning(
-        "Please recheck input fields")
-    }else{
-      this.loading=true;
-      const form={
-        id:this.id,
-        modelId:this.modelId,
-        terminalID:this.terminalId,
-        caption:this.caption,
-        description:this.description,
-        startDate:this.startDate,
-        expirationDate:this.expDate,
-        applicationId:this.applicationId,
-        firmwareId:this.firmwareId,
-        capkId:this.capkId
-      }
-    const apiURL = `terminal/edit`;
+  editTerminal() {
+    if (!this.terminalId) this.error = true;
+    if (!this.applicationId) this.error = true;
+    if (!this.modelId) this.error = true;
+    if (!this.firmwareId) this.error = true;
+    if (!this.caption) this.error = true;
+    if (!this.description) this.error = true;
+    if (!this.startDate) this.error = true;
+    if (!this.expDate) this.error = true;
+    if (!this.capkId) this.error = true;
+    if (this.error) {
+      this.toast.warning("Please recheck input fields");
+    } else {
+      this.loading = true;
+      const form = {
+        id: this.id,
+        modelId: this.modelId,
+        terminalID: this.terminalId,
+        caption: this.caption,
+        description: this.description,
+        startDate: this.startDate,
+        expirationDate: this.expDate,
+        applicationId: this.applicationId,
+        firmwareId: this.firmwareId,
+        capkId: this.capkId,
+      };
+      const apiURL = `terminal/edit`;
 
-    this.payvueservice
-      .apiCall(apiURL,'put',form)
-      .then((data) => {
-        if (data.status == 200) {
-         this.loading=false
-         this.getTerminals()
-         
-this.toast.success(data.message)
+      this.payvueservice
+        .apiCall(apiURL, "put", form)
+        .then((data) => {
+          if (data.status == 200) {
+            this.loading = false;
+            this.getTerminals();
 
-         
-
-
-        
-        } else {
+            this.toast.success(data.message);
+          } else {
+            this.isData = false;
+            this.loading = false;
+            // this.itemCount = 1;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
           this.isData = false;
           this.loading = false;
           // this.itemCount = 1;
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        this.isData = false;
-        this.loading = false;
-        // this.itemCount = 1;
-      });
+        });
+    }
   }
-}
 }
