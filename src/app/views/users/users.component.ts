@@ -3,11 +3,11 @@ import { PayVueApiService } from "app/providers/payvue-api.service";
 import eventsService from "app/providers/events.service";
 import { ToastService } from "ng-uikit-pro-standard";
 @Component({
-  selector: "app-merchant",
-  templateUrl: "./merchant.component.html",
-  styleUrls: ["./merchant.component.scss"],
+  selector: "app-users",
+  templateUrl: "./users.component.html",
+  styleUrls: ["./users.component.scss"],
 })
-export class MerchantComponent implements OnInit {
+export class UsersComponent implements OnInit {
   isData: boolean;
   loading: boolean;
   date: string;
@@ -29,21 +29,22 @@ export class MerchantComponent implements OnInit {
   start: string;
   end: string;
 
-  merchants: any;
-  merchant: any;
-  // terminalId: any;
+  users: any;
+  user: any;
 
-  merchantId: any;
-  contactName: any;
+  userId: any;
   email: any;
   phone: any;
   description: any;
-  fax: any;
   organisation: any;
   createdAt: any;
   updatedAt: any;
   id: any;
   edit: boolean;
+  companyName: any;
+  role: any;
+  lastLoggedIn: any;
+  username: any;
 
   constructor(
     private payvueservice: PayVueApiService,
@@ -51,7 +52,7 @@ export class MerchantComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getMerchants();
+    this.getUsers();
   }
   getUnassigned(status, id) {
     if (status) {
@@ -68,11 +69,11 @@ export class MerchantComponent implements OnInit {
 
   all: boolean;
   checkAll() {
-    for (var i = 0; i < this.merchants.length; i++) {
-      this.merchants[i].isSelected = this.masterSelected;
+    for (var i = 0; i < this.users.length; i++) {
+      this.users[i].isSelected = this.masterSelected;
       if (this.masterSelected) {
         console.log("true");
-        this.arr.push({ id: this.merchants[i].merchantId });
+        this.arr.push({ id: this.users[i].userId });
         // this.merchants.map(merchant=>{
         //
         // })
@@ -84,19 +85,19 @@ export class MerchantComponent implements OnInit {
     console.log(this.arr, "array");
   }
 
-  getMerchants() {
+  getUsers() {
     this.isData = undefined;
 
     let page = this.page < 1 ? 1 : this.page;
     this.loading = true;
-    const apiURL = `merchant/get-all-merchants?size=4&page_num=1`;
+    const apiURL = `user/all-users`;
 
     this.payvueservice
       .apiCall(apiURL)
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-          this.merchants = data.data.rows;
+          this.users = data.data.rows;
 
           this.isData = true;
           this.loading = false;
@@ -113,39 +114,38 @@ export class MerchantComponent implements OnInit {
         // this.itemCount = 1;
       });
   }
-  getMerchant(modal, status) {
+  getUser(modal, status) {
     this.loading = true;
     this.edit = status;
     if (this.arr.length !== 1) {
-      this.toast.warning("Please select one merchant");
+      this.toast.warning("Please select one user");
       return;
     }
     this.isData = undefined;
 
     let id = this.arr[0].id;
 
-    const apiURL = `merchant//get-all-merchant-contacts/${id}`;
+    const apiURL = `user/get-single-user/${id}`;
 
     this.payvueservice
       .apiCall(apiURL)
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-          this.merchant = data.data;
+          this.user = data.data;
           modal.show();
           this.toast.success(data.message);
 
-          console.log(this.merchant);
+          console.log(this.user);
           if (status) {
-            this.merchantId = this.merchant[0].merchantId;
-            this.contactName = this.merchant[0].contactName;
-            this.email = this.merchant[0].email;
-            this.phone = this.merchant[0].phone;
-            this.organisation = this.merchant[0].organisation;
-            this.fax = this.merchant[0].fax;
-            this.createdAt = this.merchant[0].createdAt;
-            this.description = this.merchant[0].description;
-            this.updatedAt = this.merchant[0].updatedAt;
+            this.userId = this.user.id;
+            this.username = this.user.username;
+            this.email = this.user.email;
+            this.companyName = this.user.companyName;
+            this.role = this.user.role;
+            this.lastLoggedIn = this.user.lastLoggedIn;
+            this.createdAt = this.user.createdAt;
+            this.updatedAt = this.user.updatedAt;
           }
           this.isData = true;
           this.loading = false;
@@ -162,23 +162,23 @@ export class MerchantComponent implements OnInit {
         // this.itemCount = 1;
       });
   }
-  deleteMerchant() {
+  deleteUser() {
     if (this.arr.length !== 1) {
-      this.toast.warning("Please select one merchant");
+      this.toast.warning("Please select one user");
       return;
     }
     this.isData = undefined;
 
     let id = this.arr[0].id;
 
-    const apiURL = `merchant/delete/${id}`;
+    const apiURL = `user/delete-user/${id}`;
 
     this.payvueservice
       .apiCall(apiURL)
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-          this.getMerchants();
+          this.getUsers();
 
           this.toast.success(data.message);
         } else {
@@ -197,21 +197,21 @@ export class MerchantComponent implements OnInit {
 
   toogleStatus() {
     if (this.arr.length !== 1) {
-      this.toast.warning("Please select one merchant");
+      this.toast.warning("Please select one user");
       return;
     }
     this.isData = undefined;
 
     let id = this.arr[0].id;
 
-    const apiURL = `terminal/toggle-status/${id}`;
+    const apiURL = `user/toggle-status/${id}`;
 
     this.payvueservice
       .apiCall(apiURL, "put")
       .then((data) => {
         if (data.status == 200) {
           this.serial = 1 + (this.page - 1) * this.limit;
-          this.getMerchants();
+          this.getUsers();
 
           this.toast.success(data.message);
         } else {
@@ -228,14 +228,12 @@ export class MerchantComponent implements OnInit {
       });
   }
 
-  addMerchant() {
-    if (!this.merchantId) this.error = true;
-    if (!this.contactName) this.error = true;
+  addUser() {
+    if (!this.id) this.error = true;
+    if (!this.username) this.error = true;
     if (!this.email) this.error = true;
-    if (!this.phone) this.error = true;
-    if (!this.fax) this.error = true;
-    if (!this.description) this.error = true;
-    if (!this.organisation) this.error = true;
+    if (!this.companyName) this.error = true;
+    if (!this.role) this.error = true;
     if (!this.createdAt) this.error = true;
     if (!this.updatedAt) this.error = true;
     if (this.error) {
@@ -245,15 +243,14 @@ export class MerchantComponent implements OnInit {
 
       this.loading = true;
 
-      const apiURL = `merchant/create`;
+      const apiURL = `user/create`;
       const form = {
-        merchantID: this.merchantId,
-        contactName: this.contactName,
+        userID: this.id,
+        userName: this.username,
         email: this.email,
-        description: this.description,
-        phone: this.phone,
-        fax: this.fax,
-        organisation: this.organisation,
+        companyName: this.companyName,
+        role: this.role,
+        lastLoggedIn: this.lastLoggedIn,
         createdAt: this.createdAt,
         updatedAt: this.updatedAt,
       };
@@ -262,7 +259,7 @@ export class MerchantComponent implements OnInit {
         .then((data) => {
           if (data.status == 200) {
             this.loading = true;
-            this.getMerchants();
+            this.getUsers();
             this.toast.success(data.message);
           } else {
             this.isData = false;
@@ -279,14 +276,12 @@ export class MerchantComponent implements OnInit {
     }
   }
 
-  editMerchant() {
-    if (!this.merchantId) this.error = true;
-    if (!this.contactName) this.error = true;
+  editUser() {
+    if (!this.id) this.error = true;
+    if (!this.username) this.error = true;
     if (!this.email) this.error = true;
-    if (!this.phone) this.error = true;
-    if (!this.fax) this.error = true;
-    if (!this.description) this.error = true;
-    if (!this.organisation) this.error = true;
+    if (!this.companyName) this.error = true;
+    if (!this.role) this.error = true;
     if (!this.createdAt) this.error = true;
     if (!this.updatedAt) this.error = true;
     if (this.error) {
@@ -294,25 +289,23 @@ export class MerchantComponent implements OnInit {
     } else {
       this.loading = true;
       const form = {
-        id: this.id,
-        merchantId: this.merchantId,
-        contactName: this.contactName,
+        userID: this.id,
+        userName: this.username,
         email: this.email,
-        description: this.description,
-        phone: this.phone,
-        fax: this.fax,
-        organisation: this.organisation,
+        companyName: this.companyName,
+        role: this.role,
+        lastLoggedIn: this.lastLoggedIn,
         createdAt: this.createdAt,
         updatedAt: this.updatedAt,
       };
-      const apiURL = `merchant/edit`;
+      const apiURL = `user/edit-user`;
 
       this.payvueservice
         .apiCall(apiURL, "put", form)
         .then((data) => {
           if (data.status == 200) {
             this.loading = false;
-            this.getMerchants();
+            this.getUsers();
 
             this.toast.success(data.message);
           } else {

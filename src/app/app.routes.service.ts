@@ -32,6 +32,10 @@ const routes: Route[] = [
     loadChildren: "./views/capk/capk.module#CapkModule",
   },
   {
+    path: "users",
+    loadChildren: "./views/users/users.module#UsersModule",
+  },
+  {
     path: "",
     component: MerchantComponent,
     canActivate: [AuthGuard, RoleGuard],

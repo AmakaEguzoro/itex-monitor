@@ -1,24 +1,23 @@
 <!--Double navigation-->
 <header>
-
   <mdb-sidenav #sidenav class="fixed" [fixed]="false">
     <links class="bottom-fix">
       <div class="">
-       <div class="logo-style ml-1 mr-5" style="display: inline-block">
-   
-      <a href="/" class="m-0 p-0" style="text-align: center;"
-        ><img src="../../../assets/img/logo.png" class="img-fluid" style="width: 120px;"
-      /></a>
-      <p class="logo-text">Terminal Management System</p>
-  
-          </div> 
+        <div class="logo-style ml-1 mr-5" style="display: inline-block">
+          <a href="/" class="m-0 p-0" style="text-align: center"
+            ><img
+              src="../../../assets/img/logo.png"
+              class="img-fluid"
+              style="width: 120px"
+          /></a>
+          <p class="logo-text">Terminal Management System</p>
+        </div>
         <!-- <div class="navbar-brand">
           <img src="../../../assets/img/logo.png" class="img-fluid" />
           <p>Terminal Management System</p>
         </div> -->
         <ul class="collapsible collapsible-accordion">
           <li
-           
             [ngClass]="{
               active: (dashboardLink || {}).isActive
             }"
@@ -78,6 +77,21 @@
           >
             <a class="li-class"> &nbsp; CAPK </a>
           </li>
+<<<<<<< HEAD
+=======
+          <li
+            class="side-btn"
+            [ngClass]="{
+              active: (dashboardLink8 || {}).isActive
+            }"
+            #dashboardLink7="routerLinkActive"
+            routerLink="users"
+            routerLinkActive="active-link"
+            (click)="closeNav()"
+          >
+            <a class="li-class"> &nbsp; Users </a>
+          </li>
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
         </ul>
 
         <div></div>
@@ -88,12 +102,24 @@
 
   <!-- Navbar -->
   <mdb-navbar SideClass="navbar double-nav fixed-top" [containerInside]="false">
+<<<<<<< HEAD
     <navlinks class="navbar-container navbar-style px-4"> 
 
   <div class="bar-style">
         <a (click)="sidenav.show()" class="button-collapse " style="display: flex; align-items: center;">
           <i class="fa fa-bars"></i> 
   <!-- <div class="logo-style ml-1 mr-5" style="display: inline-block">
+=======
+    <navlinks class="navbar-container navbar-style px-4">
+      <div class="bar-style">
+        <a
+          (click)="sidenav.show()"
+          class="button-collapse"
+          style="display: flex; align-items: center"
+        >
+          <i class="fa fa-bars"></i>
+          <!-- <div class="logo-style ml-1 mr-5" style="display: inline-block">
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
    
       <a href="/" class="m-0 p-0"
         ><img src="../../../assets/img/logo.png" class="img-fluid"
@@ -101,10 +127,16 @@
       <p class="logo-text">Terminal Management System</p>
   
           </div> -->
+<<<<<<< HEAD
    </a>
       </div> 
  
   </navlinks>
+=======
+        </a>
+      </div>
+    </navlinks>
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
 
     <navlinks class="nav-style">
       <ul class="nav navbar-nav nav-flex-icons ml-auto ie-double-nav">

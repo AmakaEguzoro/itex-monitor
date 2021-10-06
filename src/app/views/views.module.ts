@@ -19,6 +19,7 @@ import { ApplicationModule } from "./application/application.module";
 import { CapkModule } from "./capk/capk.module";
 import { ModelModule } from "./model/model.module";
 import { MerchantModule } from "./merchant/merchant.module";
+import { UsersModule } from "./users/users.module";
 // import { PtspsComponent } from './dashboards/ptsps/ptsps.component';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MerchantModule } from "./merchant/merchant.module";
     MerchantModule,
     TerminalModule,
     ModelModule,
+    UsersModule,
     PaginationModule2,
 
     SharedModule,

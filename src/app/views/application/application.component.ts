@@ -38,7 +38,11 @@ export class ApplicationComponent implements OnInit {
   programFileName: any;
   programFileVersion: any;
   createdAt: any;
+<<<<<<< HEAD
   organisation: any;
+=======
+  organization: any;
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
   notDownloadEDCParameters: any;
   removable: any;
   modelId: any;
@@ -154,7 +158,11 @@ export class ApplicationComponent implements OnInit {
             this.programFileName = this.application.programFileName;
             this.programFileVersion = this.application.programFileVersion;
             this.createdAt = this.application.createdAt;
+<<<<<<< HEAD
             this.organisation = this.application.organisation;
+=======
+            this.organization = this.application.organization;
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
             this.notDownloadEDCParameters =
               this.application.notDownloadEDCParameters;
             this.capkId = this.application.capkId;
@@ -253,6 +261,7 @@ export class ApplicationComponent implements OnInit {
     if (!this.applicationVersion) this.error = true;
     if (!this.modelId) this.error = true;
     if (!this.programFileName) this.error = true;
+<<<<<<< HEAD
     if (!this.organisation) this.error = true;
     // if (!this.firmwareId) this.error = true;
     // if (!this.caption) this.error = true;
@@ -260,6 +269,12 @@ export class ApplicationComponent implements OnInit {
     if (!this.updatedAt) this.error = true;
     if (!this.expirationDate) this.error = true;
     // if (!this.capkId) this.error = true;
+=======
+    if (!this.organization) this.error = true;
+    if (!this.description) this.error = true;
+    if (!this.updatedAt) this.error = true;
+    if (!this.expirationDate) this.error = true;
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
     if (this.error) {
       this.toast.warning("Please recheck input fields");
     } else {
@@ -270,8 +285,12 @@ export class ApplicationComponent implements OnInit {
       const apiURL = `application/create`;
       const form = {
         modelId: this.modelId,
+<<<<<<< HEAD
 
         // caption: this.caption,
+=======
+        organization: this.organization,
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
         description: this.description,
         startDate: this.startDate,
         expirationDate: this.expirationDate,
@@ -305,7 +324,11 @@ export class ApplicationComponent implements OnInit {
     if (!this.applicationId) this.error = true;
     if (!this.applicationId) this.error = true;
     if (!this.modelId) this.error = true;
+<<<<<<< HEAD
     // if (!this.firmwareId) this.error = true;
+=======
+    if (!this.organization) this.error = true;
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
     // if (!this.caption) this.error = true;
     if (!this.description) this.error = true;
     if (!this.startDate) this.error = true;
@@ -319,7 +342,11 @@ export class ApplicationComponent implements OnInit {
         id: this.id,
         modelId: this.modelId,
         applicationID: this.applicationId,
+<<<<<<< HEAD
         // caption: this.caption,
+=======
+        organization: this.organization,
+>>>>>>> 7377f11fc7386e3d2fa4af353f8262ee4fba351a
         description: this.description,
         startDate: this.startDate,
         expirationDate: this.expirationDate,
