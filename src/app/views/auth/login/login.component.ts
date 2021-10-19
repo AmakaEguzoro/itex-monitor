@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   error: boolean;
   errors: any;
-  // emailFormat = '^[\\w._-]+@[\\w]+[-.]?[\\w]+\.[\\w]+$'
-  // idFormat = '^\\w{15}$'
+
   constructor(
     private router: Router,
     private payvueservice: PayVueApiService,
@@ -37,67 +36,12 @@ export class LoginComponent implements OnInit {
     // ]),
   });
 
-  // validateInput(c: FormControl) {
-  //   let emailFormat = /^[\w._-]+@[\w]+[-.]?[\w]+\.[\w]+$/;
-  //   let idFormat = /^\w{15}$/;
-
-  //   return emailFormat.test(c.value) || idFormat.test(c.value)
-  //     ? null
-  //     : {
-  //         validateInput: {
-  //           valid: false,
-  //         },
-  //       };
-  // }
-
   ngOnInit() {}
-  // localStorage.removeItem("itt");
-  // this.loginVm = new LoginVm();
-  // console.log("Login Init");localStorage.Special='true';
-
-  //   this.errors = {
-  //     email_detail: "",
-  //     password_length: "",
-  //     password: "",
-  //     email: "",
-  //   };
-  // }
-
-  // Checks User's Input for errors
-  // errorHandler() {
-  //   this.error = false;
-  //   this.errors = {
-  //     email_detail: "",
-  //     password_length: "",
-  //     password: "",
-  //     email: "",
-  //   };
-
-  //   this.email = this.userDetails.get("email").value;
-
-  //   this.errors = {
-  //     email_detail:
-  //       !this.userDetails.get("email").valid && this.email
-  //         ? "This is not a Valid Email or Merchant ID"
-  //         : "",
-  //     password_length:
-  //       this.password && this.password.length < 8
-  //         ? "Minimum password length is 8 "
-  //         : "",
-  //     password: !this.password ? "Password is Required" : "",
-  //     email: !this.email ? "Email or Merchant ID is required" : "",
-  //   };
-
-  //   if (!this.userDetails.get("email").valid && this.email) this.error = true;
-  //   if (!this.password) this.error = true;
-  //   if (!this.email) this.error = true;
-  //   if (this.password && this.password.length < 8) this.error = true;
-  // }
 
   // Signs User into system
   signIn() {
     this.loading = true;
-   
+
     const apiURL = `user/login`;
 
     // this.errorHandler();  "uniqueParameter": "username",
@@ -108,8 +52,7 @@ export class LoginComponent implements OnInit {
         password: this.password,
       })
       .then((data) => {
-       
-        console.log("here")
+        console.log("here");
         this.loading = false;
         if (data.status == 200) {
           this.toast.success(data.message || "User Login Successful");

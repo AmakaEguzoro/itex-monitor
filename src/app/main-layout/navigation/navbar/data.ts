@@ -1,5 +1,3 @@
-export class NavItems {
+export class NavItems {}
 
-}
-
-export class NavDrops { }
+export class NavDrops {}

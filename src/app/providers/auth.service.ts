@@ -42,7 +42,7 @@ export class AuthService {
       return;
     }
 
-    this.router.navigate(["/merchant"]);
+    this.router.navigate(["/monitor"]);
   }
 
   loggedIn() {

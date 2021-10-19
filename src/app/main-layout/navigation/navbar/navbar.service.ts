@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { NavItems, NavDrops } from './data';
-import { NAVDROPS, NAVITEMS } from './navbar-data';
+import { Injectable } from "@angular/core";
+import { NavItems, NavDrops } from "./data";
+import { NAVDROPS, NAVITEMS } from "./navbar-data";
 
 @Injectable()
 export class NavbarService {
-
   getNavItems(): NavItems[] {
     return NAVITEMS;
   }
@@ -12,5 +11,4 @@ export class NavbarService {
   getNavDrops(): NavDrops[] {
     return NAVDROPS;
   }
-
 }

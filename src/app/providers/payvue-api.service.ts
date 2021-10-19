@@ -37,7 +37,7 @@ export class PayVueApiService {
   }
   apiCall(
     url,
-    method = "get",
+    method = "get post",
     data = {},
 
     isFormData = false,
@@ -46,12 +46,13 @@ export class PayVueApiService {
     let apiURL = `${this.rootURL}${url}`;
 
     let headers = new HttpHeaders();
-     let item = localStorage.getItem("token");
-if(item){
-  if (!isFormData) headers = headers.set("Content-Type", "application/json");
-  headers = headers.set("X-Auth-Token", localStorage.getItem("token"));
-}
-   
+    let item = localStorage.getItem("token");
+    if (item) {
+      if (!isFormData)
+        headers = headers.set("Content-Type", "application/json");
+      headers = headers.set("token", localStorage.getItem("token"));
+    }
+
     this.options = { headers, reportProgress: false };
 
     if (showProgress) {

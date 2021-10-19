@@ -1,36 +1,25 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-
-import { TestBed, waitForAsync } from '@angular/core/testing';
-import { APP_BASE_HREF } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
-  const testRoute: Routes = [
-    { path: '**', component: NavbarComponent }
-  ];
-
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ],
-      imports: [
-        RouterModule.forRoot(
-          testRoute,
-          { enableTracing: false, relativeLinkResolution: 'legacy' }
-        ),
-      ],
-      providers: [{provide: APP_BASE_HREF, useValue : '/' }],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+      declarations: [ NavbarComponent ]
     })
     .compileComponents();
   }));
 
-  it('should be created', waitForAsync(() => {
-    const fixture = TestBed.createComponent(NavbarComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NavbarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

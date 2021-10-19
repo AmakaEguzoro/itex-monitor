@@ -8,44 +8,24 @@ import { AuthGuard } from "./shared/guards/authGuard";
 import { RoleGuard } from "./shared/guards/roleGuard";
 import { LoginComponent } from "./views/auth/login/login.component";
 
-import { MerchantComponent } from "./views/merchant/merchant.component";
+import { MonitorComponent } from "./views/monitor/monitor.component";
 
 // import { PtspDetailComponent } from './views/dashboards/ptsp-detail/ptsp-detail.component';
 
 const routes: Route[] = [
-  { path: "login", component: LoginComponent },
+  // { path: "login", component: LoginComponent },
 
   {
-    path: "terminal",
-    loadChildren: "./views/terminal/terminal.module#TerminalModule",
-  },
-  {
-    path: "model",
-    loadChildren: "./views/model/model.module#ModelModule",
-  },
-  {
-    path: "application",
-    loadChildren: "./views/application/application.module#ApplicationModule",
-  },
-  {
-    path: "capk",
-    loadChildren: "./views/capk/capk.module#CapkModule",
-  },
-  {
-    path: "users",
-    loadChildren: "./views/users/users.module#UsersModule",
-  },
-  {
     path: "",
-    component: MerchantComponent,
+    component: MonitorComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
       allowedRoles: [""],
     },
     children: [
       {
-        path: "merchant",
-        component: MerchantComponent,
+        path: "monitor",
+        component: MonitorComponent,
         canActivate: [AuthGuard, RoleGuard],
         data: {
           allowedRoles: [""],
