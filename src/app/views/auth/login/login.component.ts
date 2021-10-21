@@ -42,21 +42,22 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.loading = true;
 
-    const apiURL = `user/login`;
+    const apiURL = `v1/auth/login`;
 
     // this.errorHandler();  "uniqueParameter": "username",
 
     this.payvueservice
       .apiCall(apiURL, "post", {
-        login: this.username,
+        username: this.username,
         password: this.password,
       })
       .then((data) => {
         console.log("here");
         this.loading = false;
-        if (data.status == 200) {
+        if (data) {
           this.toast.success(data.message || "User Login Successful");
-          this.authService.logIn(data.data.token, data.data);
+          this.authService.logIn(data.token, data.user);
+          // this.router.navigate(["/"]);
         } else {
           this.router.navigate(["/login"]);
           this.loading = false;

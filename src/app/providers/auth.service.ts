@@ -27,6 +27,8 @@ export class AuthService {
   // Routes user to dashboard or saved page
   // @param token, user
   logIn(token, user) {
+    console.log("got here");
+
     localStorage.setItem("token", token);
     localStorage.setItem("loggedIn", "true");
     localStorage.setItem("user", JSON.stringify(user));
@@ -42,7 +44,7 @@ export class AuthService {
       return;
     }
 
-    this.router.navigate(["/monitor"]);
+    this.router.navigate(["/"]);
   }
 
   loggedIn() {

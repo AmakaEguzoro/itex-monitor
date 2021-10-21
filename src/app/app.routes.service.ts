@@ -13,7 +13,7 @@ import { MonitorComponent } from "./views/monitor/monitor.component";
 // import { PtspDetailComponent } from './views/dashboards/ptsp-detail/ptsp-detail.component';
 
 const routes: Route[] = [
-  // { path: "login", component: LoginComponent },
+  { path: "login", component: LoginComponent },
 
   {
     path: "",

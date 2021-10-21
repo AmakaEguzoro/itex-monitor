@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { PayVueApiService } from "app/providers/payvue-api.service";
 import eventsService from "app/providers/events.service";
 import { ToastService } from "ng-uikit-pro-standard";
+import { HttpClient } from "@angular/common/http";
+import "rxjs/add/observable/interval";
+import { Observable } from "rxjs";
 @Component({
   selector: "app-monitor",
   templateUrl: "./monitor.component.html",
@@ -28,15 +31,23 @@ export class MonitorComponent implements OnInit {
   successfulCount: any;
   failedCount: any;
   initializedCount: any;
+  private alive: boolean;
+  obs: Observable<any>;
 
   constructor(
     private payvueservice: PayVueApiService,
-    private toast: ToastService
-  ) {}
-
-  ngOnInit() {
+    private toast: ToastService,
+    private http: HttpClient
+  ) {
     this.getVas();
   }
+
+  ngOnInit() {
+    Observable.interval(60000).subscribe((val) => {
+      console.log("called");
+    });
+  }
+
   getUnassigned(status, id) {
     if (status) {
       if (this.arr.includes(id)) {
@@ -52,8 +63,9 @@ export class MonitorComponent implements OnInit {
 
   getVas() {
     this.isData = undefined;
+    console.log("calling get vas");
 
-    let id = this.arr[0].id;
+    // let id = this.arr[0].id;
 
     const apiURL = `v1/transaction/details/summary`;
 
@@ -63,7 +75,7 @@ export class MonitorComponent implements OnInit {
         if (data.status == 200) {
           this.vas = data.data;
 
-          console.log(this.vas);
+          console.log("response from server", data);
           if (status) {
             this.transactionCount = this.vas.transactionCount;
             this.successfulCount = this.vas.successfulCount;

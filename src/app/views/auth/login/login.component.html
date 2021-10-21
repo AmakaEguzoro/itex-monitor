@@ -107,41 +107,36 @@
 </header> -->
 <div class="bg">
   <section class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-md-4 welcome">
-        Welcome to <strong>ITEX</strong> Terminal Management System
-      </div>
+    <div class="center">
+      <form class="form-signin">
+        <h3 class="form-signin-heading text-left">
+          Hello,
+          <p>Welcome back</p>
+        </h3>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="username"
+            placeholder="Username"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="password"
+            placeholder="Password"
+          />
+        </div>
 
-      <div class="col-md-4">
-        <form class="form-signin">
-          <h3 class="form-signin-heading text-left">
-            Hello,
-            <p>Welcome back</p>
-          </h3>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              name="username"
-              [(ngModel)]="username"
-              placeholder="Username"
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              name="password"
-              [(ngModel)]="password"
-              placeholder="Password"
-            />
-          </div>
+        <button (click)="signIn()" class="btn btn-lg btn-block">
+          <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Login
+        </button>
+      </form>
 
-          <button (click)="signIn()" class="btn btn-lg btn-block">
-            <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Login
-          </button>
-        </form>
-      </div>
       <div class="col-md-3"></div>
     </div>
   </section>
