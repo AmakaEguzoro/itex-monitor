@@ -13,6 +13,13 @@ import { ModalModule } from "ngx-bootstrap/modal";
 
 import { PaginationModule2 } from "./pagination/pagination.module";
 import { MonitorComponent } from "./monitor/monitor.component";
+import { EpmsComponent } from './epms/epms.component';
+import { InterswitchComponent } from './interswitch/interswitch.component';
+import { MwtamsComponent } from './mwtams/mwtams.component';
+import { TamsComponent } from './tams/tams.component';
+import { UplsComponent } from './upls/upls.component';
+import { VasComponent } from './vas/vas.component';
+import { PosvasComponent } from './posvas/posvas.component';
 // import { PtspsComponent } from './dashboards/ptsps/ptsps.component';
 
 @NgModule({
@@ -30,7 +37,7 @@ import { MonitorComponent } from "./monitor/monitor.component";
     CalendarModule.forRoot(),
     ModalModule.forRoot(),
   ],
-  declarations: [LoginComponent, MonitorComponent],
+  declarations: [LoginComponent, MonitorComponent, EpmsComponent, InterswitchComponent, MwtamsComponent, TamsComponent, UplsComponent, VasComponent, PosvasComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class ViewsModule {}

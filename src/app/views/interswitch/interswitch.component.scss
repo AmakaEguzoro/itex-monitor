@@ -1,0 +1,111 @@
+.title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #2d2d2d;
+}
+
+.card {
+  width: 16rem;
+  height: 8rem;
+}
+
+// total
+.total-transaction {
+  color: black;
+  background-color: #fff;
+}
+
+.total-title {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.total-number {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 41px;
+  color: #000000;
+}
+
+// successful
+.successful-transaction {
+  background-color: #7af7874d;
+}
+
+.successful-title {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.successful-number {
+  color: #10761a;
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 41px;
+}
+
+// failed
+.failed-transaction {
+  background-color: red;
+  opacity: 0.88;
+}
+
+.failed-title {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.failed-number {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 41px;
+  color: #fffdfd;
+}
+
+// queued
+.queued-transaction {
+  background: #fad99280;
+  opacity: 0.88;
+}
+.queued-title {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.queued-number {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 41px;
+  color: #bd8a1c;
+}
+
+.percentage {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  color: #000000;
+}
+.failed-percentage {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  color: #fdfbfb;
+}

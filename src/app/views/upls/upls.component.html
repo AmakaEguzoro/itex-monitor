@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <p class="title">UPSL</p>
+  </div>
+  <div class="row upsl">
+    <div class="col">
+      <div class="card total-transaction text-center">
+        <div class="card-body">
+          <p class="card-title total-title">Total Transaction</p>
+          <h5 class="total-number">
+            <b>{{ totalTransactions.toLocaleString() }}</b>
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card successful-transaction text-center">
+        <div class="card-body">
+          <p class="card-title successful-title">Successful Transaction</p>
+          <h5 class="successful-number">
+            <b>{{ approvedTransactions.toLocaleString() }}</b>
+          </h5>
+          <p class="card-title percentage">
+            {{ approvedPercent.toFixed(2) + "%" }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card failed-transaction text-center">
+        <div class="card-body">
+          <p class="card-title failed-title">Failed Transaction</p>
+          <h5 class="failed-number">
+            <b>{{ failedTransactions.toLocaleString() }}</b>
+          </h5>
+          <p class="card-title failed-percentage">
+            {{ failedPercent.toFixed(2) + "%" }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card queued-transaction text-center">
+        <div class="card-body">
+          <p class="card-title queued-title">Queued Transaction</p>
+          <h5 class="queued-number">
+            <b>{{ pendingTransactions.toLocaleString() }}</b>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

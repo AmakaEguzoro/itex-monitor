@@ -24,7 +24,7 @@ import { PayVueApiService } from "./providers/payvue-api.service";
 
 import { PaginationModule } from "ngx-bootstrap/pagination";
 import { CanDeactivateGuard } from "./shared/guards/CanDeactivateGuard";
-import { NavigationComponent } from './main-layout/navigation/navigation.component';
+import { NavigationComponent } from "./main-layout/navigation/navigation.component";
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
   imports: [

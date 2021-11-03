@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.loading = true;
 
-    const apiURL = `v1/auth/login`;
+    const apiURL = `auth/login`;
 
     // this.errorHandler();  "uniqueParameter": "username",
 

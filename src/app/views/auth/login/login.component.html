@@ -1,143 +1,28 @@
-<!-- <header>
-  <section class="view intro intro-2">
-    <div class="full-bg-img mask flex-center">
-      <div class="container">
-        <div class="row" style="display: flex; justify-content: center">
-          <div class="col-lg-7" style="align-self: center">
-          
-          </div>
-          <div
-            class="resize"
-            style="border-right: 1px solid #5322db; height: auto; width: 1px"
-          ></div>
-          <div
-            class="col-xl-4 col-lg-8 col-md-12 col-sm-12 mx-auto mt-lg-5 mb-5"
-          >
-            <!--Form with header-
-            <div
-              class="wow fadeIn mb-3"
-              data-wow-delay="0.3s"
-              style="animation-name: none; visibility: visible"
-            >
-              <form #form="ngForm" (submit)="signIn()">
-                <div class="card-body">
-                  <div>
-                    <h1
-                      class="mx-auto"
-                      style="text-align: center; color: #5322db"
-                    >
-                      Sign In
-                    </h1>
-                    <p class="mx-auto" style="text-align: center">
-                      Welcome back! Please login to your account
-                    </p>
-                  </div>
-                  <!--Body-
-                  <form [formGroup]="userDetails">
-                    <div class="md-form">
-                      <input
-                        ngDefaultControl
-                        [ngModelOptions]="{ standalone: true }"
-                        type="email"
-                        style="border-radius: 4px !important"
-                        id="orangeForm-email"
-                        class="form-control"
-                        placeholder="Your email or merchant ID"
-                        [(ngModel)]="email"
-                      />
-                      <span class="text-danger"
-                        >{{ errors.email_detail }} {{ errors.email }}</span
-                      >
-                    </div>
-
-                    <div class="md-form">
-                      <input
-                        ngDefaultControl
-                        [ngModelOptions]="{ standalone: true }"
-                        style="border-radius: 4px !important"
-                        [(ngModel)]="password"
-                        type="password"
-                        id="orangeForm-pass"
-                        class="form-control"
-                        placeholder="Your password"
-                      />
-                      <span class="text-danger"
-                        >{{ errors.password }}
-                        {{ errors.password_length }}</span
-                      >
-                    </div>
-                  </form>
-
-                  <div class="text-center pb-30">
-                    <button
-                      class="
-                        btn btn-style
-                        d-block
-                        w-100
-                        btn-ud btn-lg
-                        waves-effect waves-light
-                      "
-                      style="
-                        background-color: #5322db !important;
-                        border-radius: 10px !important;
-                      "
-                      mdbWavesEffect
-                    >
-                      Login
-                      <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
-                    </button>
-                    <div class="text-left mt-2">
-                      <a
-                        routerLink="/auth/reset"
-                        class="nav-link d-inline text-ud"
-                        style="font-weight: bold"
-                        >Forgot Password</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!--/Form with header-
-          </div>
-        </div>
+<section class="container-fluid">
+  <div class="center">
+    <form class="form-signin">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Username"
+        />
       </div>
-    </div>
-  </section>
-</header> -->
-<div class="bg">
-  <section class="container-fluid">
-    <div class="center">
-      <form class="form-signin">
-        <h3 class="form-signin-heading text-left">
-          Hello,
-          <p>Welcome back</p>
-        </h3>
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            name="username"
-            [(ngModel)]="username"
-            placeholder="Username"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            [(ngModel)]="password"
-            placeholder="Password"
-          />
-        </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Password"
+        />
+      </div>
 
-        <button (click)="signIn()" class="btn btn-lg btn-block">
-          <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Login
-        </button>
-      </form>
-
-      <div class="col-md-3"></div>
-    </div>
-  </section>
-</div>
+      <button (click)="signIn()" class="btn btn-lg btn-block">
+        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Login
+      </button>
+    </form>
+  </div>
+</section>

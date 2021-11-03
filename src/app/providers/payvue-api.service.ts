@@ -15,8 +15,8 @@ import { map } from "rxjs/operators";
 import { cR } from "@angular/core/src/render3";
 @Injectable()
 export class PayVueApiService {
-  private rootURL = environment.baseUrl + "/api/";
-  // private rootURL2 = environment.baseUrl2 + "/api/v1/";
+  private rootURL = environment.baseUrl + "/api/v1/";
+  private rootURL2 = environment.baseUrl2 + "/api/v1/";
 
   uploadPercent = new EventEmitter();
   isDone = new EventEmitter();
@@ -25,6 +25,7 @@ export class PayVueApiService {
     private authservice: AuthService // private socket: Socket, // private toast: ToastService
   ) {}
   options: any;
+
   ngOnInit(): void {}
   getUser(): any {
     const userStr = localStorage.getItem("user");
@@ -44,7 +45,6 @@ export class PayVueApiService {
     showProgress = false
   ): Promise<any> {
     let apiURL = `${this.rootURL}${url}`;
-
     let headers = new HttpHeaders();
     let item = localStorage.getItem("token");
     if (item) {
@@ -92,63 +92,63 @@ export class PayVueApiService {
     });
   }
 
-  // apiCall2(
-  //   url,
-  //   method = "get",
-  //   data = {},
-  //   isFormData = false,
-  //   showProgress = false
-  // ): Promise<any> {
-  //   let apiURL = `${this.rootURL2}${url}`;
-  //   // if(isFormData) apiURL = `http://192.168.9.123:3000/${url}`
-  //   // if(isFormData) apiURL = `http://23.239.0.110:8082/${url}`
-  //   let headers = new HttpHeaders();
-  //   headers = headers.set("Content-Type", "application/json");
-  //   // headers = headers.set(
-  //   //   "Authorization",
-  //   //   "bearer " + localStorage.getItem("itt")
-  //   // );
-  //   this.options = { headers, reportProgress: false };
-  //   // if (showProgress) {
-  //   // let options = { headers, reportProgress: false, observe: <any>"" };
+  apiCall2(
+    url,
+    method = "get",
+    data = {},
 
-  //   //   options.reportProgress = true,
-  //   //     options.observe = 'events'
-  //   // }
-  //   if (showProgress) {
-  //     this.options = { headers, reportProgress: false, observe: "" };
+    isFormData = false,
+    showProgress = false
+  ): Promise<any> {
+    let apiURL2 = `${this.rootURL2}${url}`;
+    // if (isFormData) apiURL2 = `https://ims.itexapp.com/${url}`;
+    let headers = new HttpHeaders();
+    let item = localStorage.getItem("token");
+    if (item) {
+      if (!isFormData)
+        headers = headers.set("Content-Type", "application/json");
+      headers = headers.set(
+        "Authorization",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTg1YmQxYzRmMTlmNzRkMTBjMmQ4MTUiLCJuYW1lIjoiZGV2IiwiZW1haWwiOiJkZXZlbG9wZXJzQGlpc3lzZ3JvdXAuY29tIiwidXNlcm5hbWUiOiJkZXZlbG9wZXJzIiwicm9sZXMiOlt7ImlkIjoxLCJuYW1lIjoiYWRtaW4ifV0sImlhdCI6MTYzMzQ3NzY5OSwiZXhwIjoyMTAwMDM3Njk5fQ.ExBGLZW512y1Z3KPRXchaaRjeSc-0HBE1nvA7fJ0wCk"
+      );
+    }
 
-  //     (this.options.reportProgress = true), (this.options.observe = "events");
-  //   }
+    this.options = { headers, reportProgress: false };
 
-  //   let request: any;
+    if (showProgress) {
+      this.options = { headers, reportProgress: false, observe: "" };
 
-  //   request = this.http[method](
-  //     apiURL,
-  //     "get delete".includes(method) ? this.options : data,
-  //     this.options
-  //   );
+      (this.options.reportProgress = true), (this.options.observe = "events");
+    }
 
-  //   return new Promise((resolve, reject) => {
-  //     request.subscribe(
-  //       (event) => {
-  //         if (showProgress && event.type === HttpEventType.UploadProgress) {
-  //           const percentDone = Math.round((100 * event.loaded) / event.total);
-  //           this.uploadPercent.emit(percentDone);
-  //         } else if (event instanceof HttpResponse) {
-  //           const done = "File is completely uploaded!";
-  //           this.isDone.emit(done);
-  //         }
-  //         if (event.type === HttpEventType.Response || !event.body) {
-  //           resolve(event.body || event);
-  //         }
-  //       },
-  //       (error) => {
-  //         this.authservice.checkSession(error);
-  //         console.log(error, "errors are happening");
-  //         reject(error);
-  //       }
-  //     );
-  //   });
-  // }
+    let request: any;
+
+    request = this.http[method](
+      apiURL2,
+      "get delete".includes(method) ? this.options : data,
+      this.options
+    );
+
+    return new Promise((resolve, reject) => {
+      request.subscribe(
+        (event) => {
+          if (showProgress && event.type === HttpEventType.UploadProgress) {
+            const percentDone = Math.round((100 * event.loaded) / event.total);
+            this.uploadPercent.emit(percentDone);
+          } else if (event instanceof HttpResponse) {
+            const done = "File is completely uploaded!";
+            this.isDone.emit(done);
+          }
+          if (event.type === HttpEventType.Response || !event.body) {
+            resolve(event.body || event);
+          }
+        },
+        (error) => {
+          this.authservice.checkSession(error);
+          console.log(error, "errors are happening");
+          reject(error);
+        }
+      );
+    });
+  }
 }
